@@ -1,0 +1,12 @@
+.detail-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 78px; align-items: center; max-width: 1000px; margin: 38px auto 0; }
+.detail-card-wrap { max-width: 430px; width: 100%; }
+.detail-card-wrap .meme-card { padding: 12px; box-shadow: 0 20px 60px #0d052c25; }
+.detail-card-wrap .meme-caption { font-size: 20px; padding: 17px 10px; }
+.detail-copy h1 { margin: 0 0 22px; font-size: clamp(35px, 3.5vw, 49px); letter-spacing: -2px; line-height: 1.07; }
+.detail-copy > p:not(.eyebrow) { color: var(--muted); font-size: 14px; line-height: 1.7; }
+.detail-copy .detail-date { margin: 21px 0 27px; font-size: 11px; }
+.detail-actions { display: flex; flex-wrap: wrap; gap: 11px; }
+.detail-actions .button { padding: 12px 17px; font-size: 12px; }
+.detail-copy .error-banner { margin-top: 20px; }
+.detail-skeleton { max-width: 430px; height: 500px; margin: auto; }
+@media (max-width: 800px) { .detail-layout { grid-template-columns: 1fr; gap: 32px; } .detail-card-wrap { max-width: 380px; margin: auto; } .detail-copy { max-width: 600px; } }

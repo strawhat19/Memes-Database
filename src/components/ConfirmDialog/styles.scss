@@ -1,0 +1,8 @@
+.confirmation-dialog { width: min(480px, calc(100vw - 36px)); padding: 27px; border: 1px solid var(--border); border-radius: 20px; color: var(--ink); background: var(--surface); box-shadow: 0 25px 100px #08031150; }
+.confirmation-dialog::backdrop { background: #100c2370; -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px); }
+.dialog-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+.dialog-heading h2 { margin: 0; font-size: 24px; line-height: 1.2; letter-spacing: -.8px; }
+.dialog-heading .icon-button { width: 31px; height: 31px; flex-shrink: 0; border: 0; }
+.confirmation-dialog > p { margin: 17px 0 24px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+.dialog-actions { display: flex; align-items: center; justify-content: end; gap: 10px; }
+.dialog-actions .button { min-height: 45px; padding: 11px 17px; font-size: 12px; }

@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#FFF5ED">
+    <title>Memes-Database — Landing Hero Concepts</title>
+    <style>
+      :root {
+        --ink: #25213d;
+        --paper: #fff5ed;
+        --green: #bce3af;
+        --coral: #ff785d;
+        --lilac: #b8b0f1;
+        --indigo: #5040dc;
+        --surface: #fffdf9;
+        --muted: #716978;
+        --rule: #e4dcd5;
+        --toolbar-height: 76px;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { margin: 0; color: var(--ink); background: var(--paper); font-family: 'Avenir Next', Avenir, Arial, sans-serif; }
+      button, input { font: inherit; }
+      button, a { -webkit-tap-highlight-color: transparent; }
+      button { cursor: pointer; }
+      button:disabled { cursor: default; opacity: .55; }
+      a { color: inherit; text-decoration: none; }
+      svg { display: block; }
+      img { display: block; max-width: 100%; }
+      button:focus-visible, a:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--coral); outline-offset: 5px; }
+      .icon { width: 19px; height: 19px; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+      .icon-definitions { position: absolute; width: 0; height: 0; overflow: hidden; }
+      .concept-toolbar { position: sticky; top: 0; z-index: 50; min-height: 76px; padding: 15px 28px; display: flex; align-items: center; justify-content: space-between; gap: 20px; color: #f9f4ee; background: #15121f; }
+      .concept-title { margin: 0; font-size: 13px; font-weight: 700; }
+      .concept-subtitle { margin: 5px 0 0; color: #bfb8cb; font-size: 11px; line-height: 1.35; }
+      .layout-switcher { display: flex; gap: 6px; }
+      .layout-button { display: flex; align-items: center; gap: 7px; padding: 10px 13px; color: #d7d0e4; border: 1px solid #413b50; border-radius: 8px; background: transparent; font-size: 12px; font-weight: 650; transition: color .2s, background .2s, border-color .2s; }
+      .layout-button[aria-pressed="true"] { color: #20192f; border-color: var(--green); background: var(--green); }
+      .concept-notice { position: fixed; right: 28px; top: calc(var(--toolbar-height) + 12px); z-index: 60; width: min(390px, calc(100vw - 40px)); padding: 16px 20px; border: 1px solid #514a62; border-radius: 14px; color: #fff5ed; background: #201b2d; box-shadow: 0 12px 36px #16102024; font-size: 13px; line-height: 1.5; }
+      .concept-notice[hidden] { display: none; }
+      .product-viewport { min-height: calc(100vh - var(--toolbar-height)); transition: background .35s, color .35s; }
+      .product-header { position: relative; z-index: 30; width: 100%; background: var(--paper); transition: background .25s, box-shadow .25s; }
+      .product-header[data-sticky="true"] { position: sticky; top: var(--toolbar-height); }
+      .product-header.is-scrolled { background: #fff5ede3; box-shadow: 0 1px 0 #25213d12; -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); }
+      .header-inner { max-width: 1360px; min-height: 102px; margin: auto; padding: 10px 52px; display: flex; align-items: center; justify-content: space-between; gap: 26px; }
+      .brand-link { display: flex; align-items: center; gap: 9px; flex: 0 0 auto; }
+      .brand-lockup { width: 254px; height: 70px; }
+      .brand-mark { display: none; width: 50px; height: 50px; }
+      .brand-dark-wordmark { display: none; font-size: 21px; font-weight: 750; letter-spacing: -.8px; }
+      .header-navigation { display: flex; align-items: center; gap: 29px; }
+      .nav-button { display: flex; align-items: center; gap: 7px; padding: 10px 0; color: inherit; border: 0; background: none; font-size: 14px; font-weight: 650; transition: opacity .2s; }
+      .nav-button:hover { opacity: .65; }
+      .header-actions { display: flex; align-items: center; gap: 16px; }
+      .sign-in-button { padding: 11px 16px; border: 1px solid #25213d25; border-radius: 100px; }
+      .mobile-menu-button { display: none; align-items: center; justify-content: center; width: 42px; height: 42px; border: 1px solid var(--rule); border-radius: 50%; color: inherit; background: transparent; }
+      .hero-section { max-width: 1360px; min-height: 610px; margin: auto; padding: 52px 52px 46px; display: grid; grid-template-columns: .92fr 1.08fr; align-items: center; gap: 32px; }
+      .hero-copy { position: relative; z-index: 2; padding-bottom: 15px; }
+      .hero-eyebrow { display: flex; align-items: center; gap: 9px; margin: 0 0 20px; font-size: 11px; font-weight: 750; letter-spacing: 2px; text-transform: uppercase; }
+      .eyebrow-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--indigo); }
+      .hero-headline { margin: 0; font-size: clamp(54px, 5.4vw, 78px); font-weight: 800; line-height: .99; letter-spacing: -4.5px; }
+      .headline-accent { color: var(--indigo); }
+      .hero-description { max-width: 390px; margin: 25px 0 27px; color: var(--muted); font-size: 16px; line-height: 1.7; }
+      .hero-buttons { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+      .action-button { display: flex; align-items: center; justify-content: center; gap: 9px; min-height: 52px; padding: 14px 21px; border: 1px solid #25213d25; border-radius: 100px; font-size: 14px; font-weight: 700; transition: transform .2s, background .2s, box-shadow .2s; }
+      .action-button:hover { transform: translateY(-2px); }
+      .primary-action { color: var(--paper); border-color: var(--indigo); background: var(--indigo); box-shadow: 0 5px 0 #342887; }
+      .primary-action:hover { box-shadow: 0 7px 0 #342887; }
+      .secondary-action { color: var(--ink); background: transparent; }
+      .hero-note { display: flex; align-items: center; gap: 8px; margin: 22px 0 0; color: var(--muted); font-size: 12px; }
+      .hero-note .icon { width: 15px; height: 15px; color: var(--indigo); }
+      .carousel-stage { position: relative; min-width: 0; padding: 16px 0 0; }
+      .carousel-stage::before { position: absolute; inset: 5% 1% 14%; z-index: 0; content: ''; border-radius: 46% 54% 38% 62% / 54% 35% 65% 46%; background: #e2dcfb; transform: rotate(-7deg); }
+      .stage-label { position: relative; z-index: 2; width: fit-content; margin: 0 auto 7px; padding: 9px 13px; display: flex; align-items: center; gap: 6px; border: 1px solid #25213d13; border-radius: 100px; background: var(--paper); font-size: 10px; font-weight: 750; letter-spacing: 1.3px; text-transform: uppercase; }
+      .stage-label .icon { width: 14px; height: 14px; color: var(--indigo); }
+      .carousel-shell { position: relative; }
+      .carousel-window { position: relative; height: 390px; overflow: hidden; }
+      .carousel-track { height: 100%; display: flex; align-items: center; gap: 20px; will-change: transform; transition: transform .6s cubic-bezier(.22,.72,.21,1); }
+      .meme-card { width: 286px; flex: 0 0 286px; padding: 9px 9px 12px; border: 1px solid #25213d15; border-radius: 19px; color: var(--ink); background: var(--surface); box-shadow: 0 14px 27px #30244015; transform: scale(.9) rotate(-3deg); opacity: .72; transition: transform .6s cubic-bezier(.22,.72,.21,1), opacity .4s, box-shadow .4s; }
+      .meme-card:nth-child(even) { transform: scale(.9) rotate(4deg); }
+      .meme-card.is-active { position: relative; z-index: 2; transform: scale(1) rotate(-2deg); opacity: 1; box-shadow: 0 18px 36px #30244025; }
+      .meme-artwork { position: relative; overflow: hidden; border-radius: 12px; background: #eee5ff; }
+      .meme-artwork svg { width: 100%; height: auto; }
+      .meme-caption { padding: 10px 8px; color: var(--ink); background: var(--surface); text-align: center; font-size: 15px; font-weight: 800; line-height: 1.16; letter-spacing: -.3px; }
+      .meme-caption-top { min-height: 48px; border-radius: 9px 9px 0 0; }
+      .meme-caption-bottom { min-height: 45px; }
+      .meme-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 4px 5px 0; padding-top: 10px; border-top: 1px solid #25213d10; }
+      .meme-category { color: #766d7d; font-size: 10px; font-weight: 700; letter-spacing: .5px; }
+      .meme-bookmark { display: flex; align-items: center; justify-content: center; width: 29px; height: 29px; border: 0; border-radius: 50%; color: var(--indigo); background: #5040dc0b; }
+      .meme-bookmark .icon { width: 15px; height: 15px; }
+      .meme-bookmark[aria-pressed="true"] { background: var(--green); }
+      .carousel-controls { position: relative; z-index: 3; display: flex; align-items: center; justify-content: center; gap: 15px; }
+      .carousel-arrow { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 1px solid #25213d25; border-radius: 50%; color: var(--ink); background: var(--paper); transition: transform .2s, background .2s; }
+      .carousel-arrow:hover { transform: scale(1.07); background: var(--green); }
+      .carousel-dots { display: flex; align-items: center; gap: 6px; }
+      .carousel-dot { width: 18px; height: 25px; padding: 0; border: 0; color: var(--ink); background: transparent; }
+      .carousel-dot::before { display: block; width: 6px; height: 6px; margin: auto; border-radius: 50%; background: currentColor; content: ''; opacity: .2; transition: width .3s, opacity .3s; }
+      .carousel-dot[aria-current="true"]::before { width: 17px; opacity: 1; }
+      .carousel-play { display: flex; align-items: center; gap: 5px; min-height: 35px; padding: 8px 0; border: 0; color: inherit; background: none; font-size: 10px; font-weight: 700; }
+      .carousel-play .icon { width: 13px; height: 13px; }
+      .carousel-status { margin: 12px 0 0; color: var(--muted); text-align: center; font-size: 10px; letter-spacing: .3px; }
+      .hero-trailing-line { max-width: 1256px; margin: 15px auto 0; padding: 21px 0; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 11px; }
+      .trailing-message { display: flex; align-items: center; gap: 8px; }
+      .trailing-message .icon { color: var(--indigo); width: 15px; height: 15px; }
+      .trailing-categories { display: flex; gap: 20px; }
+      .category-shortcut { padding: 5px 0; border: 0; color: inherit; background: none; font-size: 11px; font-weight: 600; }
+      .site-footer { max-width: 1360px; margin: 30px auto 0; padding: 22px 52px; display: flex; justify-content: space-between; align-items: center; gap: 20px; color: var(--muted); font-size: 11px; }
+      .footer-link { display: inline-flex; align-items: center; gap: 5px; font-weight: 650; }
+      .footer-link .icon { width: 12px; height: 12px; }
+      .scroll-to-top { position: fixed; right: 25px; bottom: 25px; z-index: 40; width: 44px; height: 44px; display: flex; justify-content: center; align-items: center; border: 1px solid #25213d18; border-radius: 50%; color: var(--paper); background: var(--indigo); box-shadow: 0 6px 20px #25213d20; transform: translateY(12px); opacity: 0; pointer-events: none; transition: transform .25s, opacity .25s; }
+      .scroll-to-top.is-visible { transform: translateY(0); opacity: 1; pointer-events: auto; }
+      .preview-dialog { width: min(840px, calc(100vw - 36px)); max-height: 85vh; padding: 29px; border: 1px solid #25213d20; border-radius: 24px; color: var(--ink); background: var(--paper); box-shadow: 0 20px 90px #18112630; }
+      .preview-dialog::backdrop { background: #1b15277a; -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px); }
+      .dialog-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+      .dialog-title { margin: 0 0 14px; font-size: 28px; font-weight: 750; letter-spacing: -1px; }
+      .dialog-close { display: flex; align-items: center; justify-content: center; width: 35px; height: 35px; flex: 0 0 35px; border: 1px solid #25213d25; border-radius: 50%; color: inherit; background: transparent; }
+      .dialog-copy { max-width: 660px; margin: 5px 0 14px; color: var(--muted); font-size: 15px; line-height: 1.7; }
+      .discover-grid { margin-top: 15px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+      .discover-card { padding: 11px; border: 1px solid #25213d12; border-radius: 13px; color: var(--ink); background: var(--surface); text-align: left; }
+      .discover-artwork { display: block; overflow: hidden; margin-bottom: 10px; border-radius: 7px; }
+      .discover-artwork svg { width: 100%; height: auto; }
+      .discover-label { display: block; font-size: 12px; font-weight: 750; line-height: 1.4; }
+      .category-options { display: flex; flex-wrap: wrap; gap: 10px; margin: 15px 0 3px; }
+      .category-option { display: flex; align-items: center; gap: 6px; padding: 12px 17px; border: 1px solid #25213d1c; border-radius: 100px; color: var(--ink); background: var(--surface); font-size: 13px; font-weight: 650; }
+      .category-option:hover { background: var(--green); }
+      body[data-layout="dark"] { --muted: #beb6cb; --rule: #fff5ed1a; color: var(--paper); background: var(--ink); }
+      body[data-layout="dark"] .product-header { background: var(--ink); }
+      body[data-layout="dark"] .product-header.is-scrolled { background: #25213de0; box-shadow: 0 1px 0 #fff5ed12; }
+      body[data-layout="dark"] .brand-lockup { display: none; }
+      body[data-layout="dark"] .brand-mark, body[data-layout="dark"] .brand-dark-wordmark { display: block; }
+      body[data-layout="dark"] .sign-in-button, body[data-layout="dark"] .mobile-menu-button { border-color: #fff5ed40; }
+      body[data-layout="dark"] .hero-section { min-height: auto; padding-top: 33px; padding-bottom: 16px; grid-template-columns: 1fr; gap: 15px; }
+      body[data-layout="dark"] .hero-copy { text-align: center; padding: 0; }
+      body[data-layout="dark"] .hero-eyebrow { justify-content: center; margin-bottom: 14px; }
+      body[data-layout="dark"] .eyebrow-dot { background: var(--green); }
+      body[data-layout="dark"] .hero-headline { max-width: 900px; margin: auto; font-size: clamp(48px, 4.7vw, 65px); letter-spacing: -3.3px; }
+      body[data-layout="dark"] .headline-accent { color: var(--lilac); }
+      body[data-layout="dark"] .hero-description { max-width: 630px; margin: 16px auto 18px; font-size: 14px; line-height: 1.5; }
+      body[data-layout="dark"] .hero-buttons { justify-content: center; }
+      body[data-layout="dark"] .action-button { min-height: 45px; padding: 11px 20px; }
+      body[data-layout="dark"] .primary-action { color: var(--ink); border-color: var(--green); background: var(--green); box-shadow: none; }
+      body[data-layout="dark"] .secondary-action { color: var(--paper); border-color: #fff5ed40; }
+      body[data-layout="dark"] .hero-note { display: none; }
+      body[data-layout="dark"] .carousel-stage { max-width: 980px; width: 100%; margin: auto; padding-top: 5px; }
+      body[data-layout="dark"] .carousel-stage::before { inset: 15% 10% 20%; border-radius: 50%; background: #5040dc60; filter: blur(40px); transform: none; }
+      body[data-layout="dark"] .stage-label { display: none; }
+      body[data-layout="dark"] .carousel-window { height: 340px; }
+      body[data-layout="dark"] .meme-card { width: 250px; flex-basis: 250px; padding: 7px 7px 9px; opacity: .45; }
+      body[data-layout="dark"] .meme-card.is-active { opacity: 1; }
+      body[data-layout="dark"] .meme-caption { padding: 8px; font-size: 13px; }
+      body[data-layout="dark"] .meme-caption-top { min-height: 40px; }
+      body[data-layout="dark"] .meme-caption-bottom { min-height: 36px; }
+      body[data-layout="dark"] .meme-card-footer { margin-top: 1px; padding-top: 5px; }
+      body[data-layout="dark"] .carousel-arrow { color: var(--paper); border-color: #fff5ed35; background: #302b45; }
+      body[data-layout="dark"] .carousel-arrow:hover { color: var(--ink); background: var(--green); }
+      body[data-layout="dark"] .carousel-dot { color: var(--paper); }
+      body[data-layout="dark"] .hero-trailing-line { margin-top: 14px; }
+      body[data-layout="dark"] .trailing-message .icon { color: var(--green); }
+      body[data-layout="editorial"] { --rule: #25213d25; background: #fffdf9; }
+      body[data-layout="editorial"] .product-header { background: #fffdf9; }
+      body[data-layout="editorial"] .product-header.is-scrolled { background: #fffdf9e0; }
+      body[data-layout="editorial"] .header-inner { border-bottom: 1px solid var(--rule); }
+      body[data-layout="editorial"] .hero-section { min-height: auto; padding-top: 37px; padding-bottom: 10px; grid-template-columns: 1fr; gap: 20px; }
+      body[data-layout="editorial"] .hero-copy { display: grid; grid-template-columns: 1.3fr 1fr; align-items: end; gap: 45px; padding: 0; }
+      body[data-layout="editorial"] .hero-eyebrow { margin-bottom: 16px; }
+      body[data-layout="editorial"] .hero-headline { max-width: 590px; font-size: clamp(45px, 4.8vw, 66px); letter-spacing: -3.5px; }
+      body[data-layout="editorial"] .headline-accent { color: inherit; }
+      body[data-layout="editorial"] .hero-copy-detail { padding-bottom: 5px; }
+      body[data-layout="editorial"] .hero-description { max-width: 420px; margin: 0 0 20px; font-size: 14px; }
+      body[data-layout="editorial"] .hero-note { display: none; }
+      body[data-layout="editorial"] .primary-action { color: var(--paper); border-color: var(--ink); background: var(--ink); box-shadow: none; }
+      body[data-layout="editorial"] .carousel-stage { padding-top: 0; }
+      body[data-layout="editorial"] .carousel-stage::before { inset: 5% 0 18%; border-radius: 24px; background: var(--paper); transform: none; }
+      body[data-layout="editorial"] .stage-label { display: none; }
+      body[data-layout="editorial"] .carousel-window { height: 350px; }
+      body[data-layout="editorial"] .meme-card { width: 258px; flex-basis: 258px; padding: 7px 7px 9px; border-radius: 12px; opacity: .88; transform: scale(.93); }
+      body[data-layout="editorial"] .meme-card:nth-child(even) { transform: scale(.93); }
+      body[data-layout="editorial"] .meme-card.is-active { transform: scale(1); opacity: 1; }
+      body[data-layout="editorial"] .meme-artwork { border-radius: 6px; }
+      body[data-layout="editorial"] .meme-caption { padding: 8px; font-size: 13px; }
+      body[data-layout="editorial"] .meme-caption-top { min-height: 40px; }
+      body[data-layout="editorial"] .meme-caption-bottom { min-height: 37px; }
+      body[data-layout="editorial"] .meme-card-footer { padding-top: 5px; }
+      .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+      @media (max-width: 1100px) {
+        .header-inner { padding-right: 30px; padding-left: 30px; gap: 16px; }
+        .brand-lockup { width: 218px; height: 60px; }
+        .header-navigation { gap: 18px; }
+        .hero-section { padding-right: 30px; padding-left: 30px; gap: 20px; }
+        .hero-headline { letter-spacing: -3.2px; }
+        .hero-trailing-line { margin-right: 30px; margin-left: 30px; }
+        .site-footer { padding-right: 30px; padding-left: 30px; }
+      }
+      @media (max-width: 800px) {
+        .concept-toolbar { padding: 13px 18px; flex-wrap: wrap; gap: 11px; }
+        .concept-toolbar-copy { display: flex; width: 100%; justify-content: space-between; align-items: center; gap: 10px; }
+        .concept-subtitle { margin: 0; font-size: 10px; text-align: right; }
+        .layout-switcher { width: 100%; }
+        .layout-button { flex: 1; justify-content: center; padding: 9px; }
+        .header-inner { min-height: 80px; padding: 8px 20px; }
+        .brand-lockup { width: 220px; height: 61px; }
+        .brand-dark-wordmark { font-size: 18px; }
+        .brand-mark { width: 43px; height: 43px; }
+        .header-navigation { display: none; position: absolute; top: 100%; right: 16px; left: 16px; padding: 15px 20px; border: 1px solid var(--rule); border-radius: 14px; background: var(--paper); box-shadow: 0 12px 30px #25213d15; }
+        .header-navigation.is-open { display: flex; justify-content: space-around; gap: 10px; }
+        body[data-layout="dark"] .header-navigation { background: var(--ink); }
+        .sign-in-button { display: none; }
+        .mobile-menu-button { display: flex; }
+        .hero-section { min-height: auto; padding: 36px 24px 20px; grid-template-columns: 1fr; gap: 20px; }
+        .hero-copy { text-align: center; padding: 0; }
+        .hero-eyebrow { justify-content: center; margin-bottom: 16px; }
+        .hero-headline { max-width: 520px; margin: auto; font-size: clamp(46px, 8.5vw, 68px); letter-spacing: -2.8px; }
+        .hero-description { max-width: 410px; margin: 19px auto 23px; font-size: 14px; }
+        .hero-buttons, .hero-note { justify-content: center; }
+        .carousel-stage { max-width: 600px; width: 100%; margin: auto; }
+        .carousel-window { height: 374px; }
+        .hero-trailing-line { margin: 15px 24px 0; flex-wrap: wrap; justify-content: center; text-align: center; }
+        .trailing-categories { gap: 16px; flex-wrap: wrap; justify-content: center; }
+        .site-footer { margin-top: 14px; padding: 23px 24px; }
+        body[data-layout="editorial"] .hero-copy { display: block; }
+        body[data-layout="editorial"] .hero-headline { margin: auto; }
+        body[data-layout="editorial"] .hero-description { margin: 19px auto 23px; }
+        .discover-grid { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (max-width: 420px) {
+        .concept-subtitle { max-width: 140px; }
+        .layout-button { font-size: 10px; gap: 4px; }
+        .layout-button .icon { width: 14px; height: 14px; }
+        .brand-lockup { width: 194px; height: 54px; }
+        .brand-dark-wordmark { font-size: 16px; }
+        .hero-headline { font-size: 47px; }
+        .hero-buttons { gap: 8px; }
+        .action-button { min-height: 47px; padding: 12px 17px; font-size: 12px; }
+        .hero-note { font-size: 10px; }
+        .carousel-play { margin-left: 0; }
+        .carousel-controls { gap: 10px; }
+        .carousel-dot { width: 15px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        *, *::before, *::after { transition: none !important; animation: none !important; }
+        .carousel-track { will-change: auto; }
+        .action-button:hover { transform: none; }
+      }
+    </style>
+  </head>
+  <body data-layout="cream">
+    <svg class="icon-definitions" aria-hidden="true">
+      <defs>
+        <symbol id="icon-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+        <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M4 12h16M14 6l6 6-6 6"/></symbol>
+        <symbol id="icon-arrow-left" viewBox="0 0 24 24"><path d="M20 12H4M10 6l-6 6 6 6"/></symbol>
+        <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16"/></symbol>
+        <symbol id="icon-bookmark" viewBox="0 0 24 24"><path d="M6 4h12v17l-6-4-6 4Z"/></symbol>
+        <symbol id="icon-spark" viewBox="0 0 24 24"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5Z"/></symbol>
+        <symbol id="icon-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/></symbol>
+        <symbol id="icon-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7v.1"/></symbol>
+        <symbol id="icon-play" viewBox="0 0 24 24"><path d="m7 4 13 8L7 20Z"/></symbol>
+        <symbol id="icon-pause" viewBox="0 0 24 24"><path d="M8 4v16M16 4v16"/></symbol>
+        <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+        <symbol id="icon-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+        <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M20 15a9 9 0 0 1-11-11A9 9 0 1 0 20 15Z"/></symbol>
+        <symbol id="icon-layout" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M11 9v11"/></symbol>
+        <symbol id="icon-wide" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M3 15h18"/></symbol>
+        <symbol id="icon-up" viewBox="0 0 24 24"><path d="M12 20V4M5 11l7-7 7 7"/></symbol>
+        <symbol id="icon-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M10 4H4v16h16v-6"/></symbol>
+      </defs>
+    </svg>
+    <aside id="concept-toolbar" class="concept-toolbar" aria-label="Concept preview controls">
+      <div id="concept-toolbar-copy" class="concept-toolbar-copy">
+        <p id="concept-title" class="concept-title">Landing Hero Concepts · v1</p>
+        <p id="concept-subtitle" class="concept-subtitle">Selected logo · M Light Corner Overlay</p>
+      </div>
+      <div id="layout-switcher" class="layout-switcher" role="group" aria-label="Choose landing page layout">
+        <button id="layout-cream" class="layout-button" data-layout-option="cream" aria-pressed="true"><svg class="icon" aria-hidden="true"><use href="#icon-layout"/></svg>Cream Split</button>
+        <button id="layout-dark" class="layout-button" data-layout-option="dark" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#icon-moon"/></svg>Dark Stage</button>
+        <button id="layout-editorial" class="layout-button" data-layout-option="editorial" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#icon-wide"/></svg>Editorial</button>
+      </div>
+    </aside>
+    <p id="concept-notice" class="concept-notice" role="status" hidden></p>
+    <div id="product-viewport" class="product-viewport">
+      <header id="product-header" class="product-header" data-sticky="true">
+        <div id="header-inner" class="header-inner">
+          <a id="brand-home-link" class="brand-link" href="#" aria-label="Memes-Database home">
+            <img id="brand-lockup" class="brand-lockup" src="../../../brand/logo.svg" alt="Memes-Database">
+            <img id="brand-dark-mark" class="brand-mark" src="../../../brand/logo-mark.svg" alt="">
+            <span id="brand-dark-wordmark" class="brand-dark-wordmark" aria-hidden="true">Memes-Database</span>
+          </a>
+          <nav id="header-navigation" class="header-navigation" aria-label="Main navigation">
+            <button id="nav-discover" class="nav-button" data-action="discover"><svg class="icon" aria-hidden="true"><use href="#icon-spark"/></svg>Discover</button>
+            <button id="nav-categories" class="nav-button" data-action="categories"><svg class="icon" aria-hidden="true"><use href="#icon-grid"/></svg>Categories</button>
+            <button id="nav-about" class="nav-button" data-action="about"><svg class="icon" aria-hidden="true"><use href="#icon-info"/></svg>About</button>
+          </nav>
+          <div id="header-actions" class="header-actions">
+            <button id="nav-sign-in" class="nav-button sign-in-button" data-action="sign-in"><svg class="icon" aria-hidden="true"><use href="#icon-user"/></svg>Sign In</button>
+            <button id="mobile-menu-button" class="mobile-menu-button" aria-label="Open navigation" aria-controls="header-navigation" aria-expanded="false"><svg class="icon" aria-hidden="true"><use href="#icon-menu"/></svg></button>
+          </div>
+        </div>
+      </header>
+      <main id="landing-main" class="landing-main">
+        <section id="hero-section" class="hero-section" aria-labelledby="hero-headline">
+          <div id="hero-copy" class="hero-copy">
+            <div id="hero-title-block" class="hero-title-block">
+              <p id="hero-eyebrow" class="hero-eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>A good laugh, well filed</p>
+              <h1 id="hero-headline" class="hero-headline">Find your next <span class="headline-accent">favorite meme.</span></h1>
+            </div>
+            <div id="hero-copy-detail" class="hero-copy-detail">
+              <p id="hero-description" class="hero-description">For the oddly specific, the instantly relatable, and the ones you have to send to a friend. Your next laugh belongs here.</p>
+              <div id="hero-buttons" class="hero-buttons">
+                <button id="explore-memes-button" class="action-button primary-action" data-action="discover"><svg class="icon" aria-hidden="true"><use href="#icon-spark"/></svg>Explore Memes<svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"/></svg></button>
+                <button id="add-meme-button" class="action-button secondary-action" data-action="add-meme"><svg class="icon" aria-hidden="true"><use href="#icon-plus"/></svg>Add a Meme</button>
+              </div>
+              <p id="hero-note" class="hero-note"><svg class="icon" aria-hidden="true"><use href="#icon-bookmark"/></svg>Find it. Save it. Send it to the group chat.</p>
+            </div>
+          </div>
+          <div id="carousel-stage" class="carousel-stage">
+            <p id="stage-label" class="stage-label"><svg class="icon" aria-hidden="true"><use href="#icon-spark"/></svg>A little scroll. A good laugh.</p>
+            <section id="meme-carousel" class="carousel-shell" role="region" aria-roledescription="carousel" aria-label="Featured meme cards" tabindex="0">
+              <div id="carousel-window" class="carousel-window">
+                <div id="carousel-track" class="carousel-track"></div>
+              </div>
+              <div id="carousel-controls" class="carousel-controls">
+                <button id="carousel-previous" class="carousel-arrow" aria-label="Previous meme"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-left"/></svg></button>
+                <div id="carousel-dots" class="carousel-dots" role="group" aria-label="Choose a meme"></div>
+                <button id="carousel-next" class="carousel-arrow" aria-label="Next meme"><svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"/></svg></button>
+                <button id="carousel-play" class="carousel-play" aria-pressed="false"><svg class="icon" aria-hidden="true"><use id="carousel-play-icon" href="#icon-play"/></svg><span id="carousel-play-label">Auto-play</span></button>
+              </div>
+              <p id="carousel-status" class="carousel-status">Use the arrows to find your kind of funny.</p>
+              <p id="carousel-announcement" class="visually-hidden" aria-live="polite" aria-atomic="true"></p>
+            </section>
+          </div>
+        </section>
+        <div id="hero-trailing-line" class="hero-trailing-line">
+          <span id="trailing-message" class="trailing-message"><svg class="icon" aria-hidden="true"><use href="#icon-bookmark"/></svg>Funny. Filed. Found.</span>
+          <div id="trailing-categories" class="trailing-categories" aria-label="Meme categories">
+            <button id="category-daily-life" class="category-shortcut" data-category="Daily Life">Daily Life</button>
+            <button id="category-internet-brain" class="category-shortcut" data-category="Internet Brain">Internet Brain</button>
+            <button id="category-work-life" class="category-shortcut" data-category="Work Life">Work Life</button>
+            <button id="category-pets" class="category-shortcut" data-category="Pets">Pets</button>
+          </div>
+        </div>
+      </main>
+      <footer id="site-footer" class="site-footer">
+        <span id="footer-copyright">© <span id="copyright-year">2026</span> Memes-Database</span>
+        <a id="footer-piratechs-link" class="footer-link" href="https://piratechs.com/">Made with Piratechs<svg class="icon" aria-hidden="true"><use href="#icon-external"/></svg></a>
+      </footer>
+    </div>
+    <button id="scroll-to-top" class="scroll-to-top" aria-label="Scroll to top" tabindex="-1"><svg class="icon" aria-hidden="true"><use href="#icon-up"/></svg></button>
+    <dialog id="preview-dialog" class="preview-dialog" aria-labelledby="dialog-title">
+      <div id="dialog-header" class="dialog-header">
+        <h2 id="dialog-title" class="dialog-title"></h2>
+        <button id="dialog-close" class="dialog-close" aria-label="Close dialog"><svg class="icon" aria-hidden="true"><use href="#icon-close"/></svg></button>
+      </div>
+      <div id="dialog-content" class="dialog-content"></div>
+    </dialog>
+    <script>
+      const sticky = true;
+      const reducedMotion = window.matchMedia(`(prefers-reduced-motion: reduce)`);
+      const header = document.querySelector(`#product-header`);
+      const toolbar = document.querySelector(`#concept-toolbar`);
+      const dialog = document.querySelector(`#preview-dialog`);
+      const carousel = document.querySelector(`#meme-carousel`);
+      const track = document.querySelector(`#carousel-track`);
+      const carouselWindow = document.querySelector(`#carousel-window`);
+      const dots = document.querySelector(`#carousel-dots`);
+      const playButton = document.querySelector(`#carousel-play`);
+      const notice = document.querySelector(`#concept-notice`);
+      const scrollTopButton = document.querySelector(`#scroll-to-top`);
+      const icon = name => `<svg class="icon" aria-hidden="true"><use href="#icon-${name}"/></svg>`;
+      const scene = (id, title, background, artwork) => `<svg viewBox="0 0 320 240" role="img" aria-labelledby="scene-${id}-title"><title id="scene-${id}-title">${title}</title><rect width="320" height="240" fill="${background}"/>${artwork}</svg>`;
+      const memes = [
+        {
+          id: `tabs`,
+          category: `Internet Brain`,
+          bottom: `17 TABS LATER`,
+          top: `ME: ONE QUICK SEARCH`,
+          title: `The quick-search spiral`,
+          artwork: scene(`tabs`, `An original violet character looking over a laptop full of colorful tabs`, `#DAD2FC`, `<circle cx="256" cy="47" r="28" fill="#BCE3AF"/><path d="M40 240v-39q0-46 62-46t62 46v39" fill="#5040DC"/><circle cx="102" cy="107" r="45" fill="#FFF5ED"/><path d="M65 93q15-27 61-13" fill="none" stroke="#25213D" stroke-width="10" stroke-linecap="round"/><circle cx="90" cy="111" r="4" fill="#25213D"/><circle cx="116" cy="111" r="4" fill="#25213D"/><path d="M99 130h15" stroke="#25213D" stroke-width="4" stroke-linecap="round"/><rect x="137" y="79" width="144" height="121" rx="11" fill="#25213D"/><rect x="146" y="87" width="127" height="91" rx="6" fill="#FFF5ED"/><path d="M127 201h165l-13 10H140Z" fill="#71628C"/><rect x="157" y="48" width="51" height="31" rx="5" fill="#FF785D"/><rect x="198" y="29" width="51" height="31" rx="5" fill="#B8B0F1"/><rect x="234" y="53" width="51" height="31" rx="5" fill="#BCE3AF"/><path d="M160 109h92m-92 17h72m-72 17h84" stroke="#B8B0F1" stroke-width="9" stroke-linecap="round"/>`)
+        },
+        {
+          id: `coffee`,
+          category: `Daily Life`,
+          bottom: `PLEASE HOLD`,
+          top: `ME BEFORE COFFEE`,
+          title: `Waiting for the coffee update`,
+          artwork: scene(`coffee`, `An original sleepy coral character beside an oversized mint coffee cup`, `#F7DBC8`, `<path d="M31 240v-31q0-48 57-48t57 48v31" fill="#FF785D"/><circle cx="88" cy="116" r="42" fill="#FFF5ED"/><path d="M65 111h13m21 0h13" stroke="#25213D" stroke-width="5" stroke-linecap="round"/><path d="M79 133h18" stroke="#25213D" stroke-width="4" stroke-linecap="round"/><rect x="162" y="101" width="102" height="86" rx="20" fill="#BCE3AF"/><path d="M264 115h14q22 0 22 24t-23 24h-13" fill="none" stroke="#81A278" stroke-width="12"/><ellipse cx="213" cy="103" rx="49" ry="11" fill="#728665"/><path d="M192 79q-11-11 0-21t0-20m24 37q-11-11 0-21t0-20m23 45q-11-11 0-21t0-20" fill="none" stroke="#FFF5ED" stroke-width="6" stroke-linecap="round"/><path d="M161 202h109" stroke="#25213D" stroke-width="6" stroke-linecap="round"/><path d="M246 28h22m-11-11v22" stroke="#FF785D" stroke-width="4" stroke-linecap="round"/>`)
+        },
+        {
+          id: `cat`,
+          category: `Pets`,
+          bottom: `CHIEF CHAOS OFFICER`,
+          top: `MY CAT AT 3 AM`,
+          title: `The night-shift cat`,
+          artwork: scene(`cat`, `An original apricot cat perched above a fallen plant at night`, `#5040DC`, `<circle cx="260" cy="41" r="21" fill="#FFF5ED"/><circle cx="269" cy="32" r="20" fill="#5040DC"/><path d="M41 216h239" stroke="#B8B0F1" stroke-width="7" stroke-linecap="round"/><path d="M93 79 77 36l41 24 40-24 7 46" fill="#FFB87D"/><rect x="74" y="67" width="100" height="116" rx="38" fill="#FFB87D"/><path d="M157 165q74 31 57-32" fill="none" stroke="#FFB87D" stroke-width="19" stroke-linecap="round"/><circle cx="106" cy="94" r="5" fill="#25213D"/><circle cx="143" cy="94" r="5" fill="#25213D"/><path d="m119 109 5 7 5-7Z" fill="#FF785D"/><path d="M103 179v29m47-29v29" stroke="#FFB87D" stroke-width="15" stroke-linecap="round"/><path d="M230 157 260 185l-31 21-23-25Z" fill="#FF785D"/><path d="M218 177q-29-38-57-26m58 25q-11-50 17-57" fill="none" stroke="#BCE3AF" stroke-width="10" stroke-linecap="round"/><path d="M43 63h9m-5-5v10m198 37h9m-5-5v10" stroke="#B8B0F1" stroke-width="3"/>`)
+        },
+        {
+          id: `chair`,
+          category: `Daily Life`,
+          bottom: `THE CHAIR: ANOTHER OUTFIT`,
+          top: `ME: I WILL DO LAUNDRY`,
+          title: `The chair collection`,
+          artwork: scene(`chair`, `An original chair carrying a comically tall pile of folded clothes`, `#DDE9CF`, `<rect x="104" y="80" width="117" height="95" rx="13" fill="#25213D"/><rect x="91" y="153" width="143" height="22" rx="9" fill="#5040DC"/><path d="M108 171v50m108-50v50" stroke="#25213D" stroke-width="11" stroke-linecap="round"/><rect x="97" y="119" width="129" height="34" rx="11" fill="#FF785D" transform="rotate(-5 161 136)"/><rect x="91" y="94" width="132" height="30" rx="10" fill="#B8B0F1" transform="rotate(4 157 109)"/><rect x="100" y="70" width="132" height="29" rx="9" fill="#FFF5ED" transform="rotate(-6 166 84)"/><rect x="88" y="44" width="129" height="30" rx="10" fill="#FF785D" transform="rotate(5 152 59)"/><rect x="107" y="20" width="111" height="28" rx="9" fill="#B8B0F1" transform="rotate(-4 163 34)"/><path d="M58 69h15m-8-7v14m191 52h15m-7-7v14" stroke="#7BA370" stroke-width="3"/>`)
+        },
+        {
+          id: `meeting`,
+          category: `Work Life`,
+          bottom: `AND ANOTHER ONE BEGINS`,
+          top: `WHEN THE MEETING ENDS`,
+          title: `The meeting sequel`,
+          artwork: scene(`meeting`, `An original lilac character at a desk beside two endlessly looping meeting arrows`, `#E9DDFC`, `<rect x="31" y="174" width="256" height="14" rx="5" fill="#25213D"/><path d="M51 186v54m216-54v54" stroke="#25213D" stroke-width="10"/><path d="M64 176v-22q0-27 41-27t41 27v22" fill="#B8B0F1"/><circle cx="105" cy="93" r="33" fill="#FFF5ED"/><path d="M87 90h11m13 0h11" stroke="#25213D" stroke-width="4" stroke-linecap="round"/><ellipse cx="105" cy="108" rx="7" ry="8" fill="#25213D"/><rect x="156" y="115" width="85" height="59" rx="5" fill="#5040DC"/><rect x="163" y="122" width="71" height="43" rx="3" fill="#BCE3AF"/><path d="M188 46q40-25 62 4m-8-18 9 20-22-1m15 23q-40 25-62-4m8 18-9-20 22 1" fill="none" stroke="#FF785D" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>`)
+        },
+        {
+          id: `saved`,
+          category: `Internet Brain`,
+          bottom: `LATER HAS LEFT THE CHAT`,
+          top: `SAVED FOR LATER`,
+          title: `The later folder`,
+          artwork: scene(`saved`, `An original coral folder with a tiny fleeing clock character`, `#FFF5ED`, `<path d="M38 80V61q0-13 13-13h53l19 20h110q14 0 14 14v97q0 17-17 17H55q-17 0-17-17Z" fill="#5040DC"/><rect x="37" y="87" width="211" height="112" rx="19" fill="#FF785D"/><path d="M87 128q8-10 16 0m66 0q8-10 16 0" fill="none" stroke="#25213D" stroke-width="6" stroke-linecap="round"/><path d="M109 151h55q-6 25-27 25t-28-25" fill="#25213D"/><circle cx="265" cy="67" r="24" fill="#BCE3AF"/><path d="M265 52v16l11 5m-22 12-9 14m27-11 12 11" fill="none" stroke="#25213D" stroke-width="4" stroke-linecap="round"/><path d="M211 32h19m-29 16h22m-19 17h19" stroke="#B8B0F1" stroke-width="4" stroke-linecap="round"/>`)
+        }
+      ];
+      let activeIndex = 1;
+      let isPlaying = false;
+      let carouselTimer;
+      let noticeTimer;
+      let hoverPaused = false;
+      let focusPaused = false;
+      const savedMemes = new Set();
+
+      const showNotice = message => {
+        window.clearTimeout(noticeTimer);
+        notice.textContent = message;
+        notice.hidden = false;
+        noticeTimer = window.setTimeout(() => { notice.hidden = true; }, 6000);
+      };
+      const setToolbarHeight = () => document.documentElement.style.setProperty(`--toolbar-height`, `${toolbar.getBoundingClientRect().height}px`);
+      const stopTimer = () => { window.clearInterval(carouselTimer); carouselTimer = undefined; };
+      const refreshTimer = () => {
+        stopTimer();
+        if (isPlaying && !reducedMotion.matches && !hoverPaused && !focusPaused && !document.hidden && !dialog.open) {
+          carouselTimer = window.setInterval(() => moveCarousel(1, false), 4600);
+        }
+      };
+      const alignCarousel = (animate = true) => {
+        const card = track.children?.[activeIndex];
+        if (!card) return;
+        if (!animate) track.style.transition = `none`;
+        const gap = Number.parseFloat(getComputedStyle(track).gap) || 20;
+        const cardWidth = card.offsetWidth;
+        const offset = carouselWindow.clientWidth / 2 - cardWidth / 2 - activeIndex * (cardWidth + gap);
+        track.style.transform = `translateX(${offset}px)`;
+        Array.from(track.children).forEach((item, index) => {
+          item.classList.toggle(`is-active`, index === activeIndex);
+          item.setAttribute(`aria-hidden`, index === activeIndex ? `false` : `true`);
+          item.querySelector(`button`)?.setAttribute(`tabindex`, index === activeIndex ? `0` : `-1`);
+        });
+        Array.from(dots.children).forEach((dot, index) => dot.setAttribute(`aria-current`, index === activeIndex ? `true` : `false`));
+        if (!animate) window.requestAnimationFrame(() => { track.style.transition = ``; });
+      };
+      const moveCarousel = (step, announce = true) => {
+        activeIndex = (activeIndex + step + memes.length) % memes.length;
+        alignCarousel();
+        if (announce) document.querySelector(`#carousel-announcement`).textContent = `${memes[activeIndex]?.title}, ${activeIndex + 1} of ${memes.length}`;
+      };
+      const selectMeme = index => {
+        activeIndex = index;
+        alignCarousel();
+        document.querySelector(`#carousel-announcement`).textContent = `${memes[activeIndex]?.title}, ${activeIndex + 1} of ${memes.length}`;
+        refreshTimer();
+      };
+      const renderCards = () => {
+        track.innerHTML = memes.map((meme, index) => `<article id="meme-card-${meme.id}" class="meme-card" role="group" aria-roledescription="slide" aria-label="${index + 1} of ${memes.length}: ${meme.title}"><div id="meme-caption-top-${meme.id}" class="meme-caption meme-caption-top">${meme.top}</div><div id="meme-artwork-${meme.id}" class="meme-artwork">${meme.artwork}</div><div id="meme-caption-bottom-${meme.id}" class="meme-caption meme-caption-bottom">${meme.bottom}</div><div id="meme-card-footer-${meme.id}" class="meme-card-footer"><span id="meme-category-${meme.id}" class="meme-category">${meme.category}</span><button id="save-meme-${meme.id}" class="meme-bookmark" data-save-meme="${meme.id}" aria-label="Save ${meme.title}" aria-pressed="false">${icon(`bookmark`)}</button></div></article>`).join(``);
+        dots.innerHTML = memes.map((meme, index) => `<button id="carousel-dot-${meme.id}" class="carousel-dot" data-meme-index="${index}" aria-label="Show ${meme.title}" aria-current="false"></button>`).join(``);
+      };
+      const openDialog = (title, content) => {
+        document.querySelector(`#dialog-title`).textContent = title;
+        document.querySelector(`#dialog-content`).innerHTML = content;
+        dialog.showModal();
+        refreshTimer();
+      };
+      const openDiscover = () => openDialog(`Explore Memes`, `<p class="dialog-copy">A little something for your very specific sense of humor.</p><div id="discover-grid" class="discover-grid">${memes.map((meme, index) => `<button id="discover-meme-${meme.id}" class="discover-card" data-discover-index="${index}"><span class="discover-artwork">${meme.artwork.replaceAll(`scene-${meme.id}`, `discover-scene-${meme.id}`)}</span><span class="discover-label">${meme.title}</span></button>`).join(``)}</div>`);
+      const selectCategory = category => {
+        const index = memes.findIndex(meme => meme.category === category);
+        if (index < 0) return;
+        selectMeme(index);
+        dialog.close();
+        document.querySelector(`#carousel-status`).textContent = `${category} · ${memes[index]?.title}`;
+        carousel.focus({ preventScroll: true });
+      };
+      const updatePlayButton = () => {
+        playButton.disabled = reducedMotion.matches;
+        playButton.setAttribute(`aria-pressed`, isPlaying ? `true` : `false`);
+        document.querySelector(`#carousel-play-icon`).setAttribute(`href`, isPlaying ? `#icon-pause` : `#icon-play`);
+        document.querySelector(`#carousel-play-label`).textContent = reducedMotion.matches ? `Motion off` : isPlaying ? `Pause` : `Auto-play`;
+        playButton.setAttribute(`aria-label`, reducedMotion.matches ? `Autoplay disabled by reduced motion preference` : isPlaying ? `Pause carousel autoplay` : `Start carousel autoplay`);
+      };
+      const updateScrollState = () => {
+        header.classList.toggle(`is-scrolled`, window.scrollY > 16);
+        const hero = document.querySelector(`#hero-section`);
+        const threshold = Math.max(180, hero.offsetTop + hero.offsetHeight - window.innerHeight);
+        const visible = window.scrollY > threshold;
+        scrollTopButton.classList.toggle(`is-visible`, visible);
+        scrollTopButton.setAttribute(`tabindex`, visible ? `0` : `-1`);
+      };
+
+      header.dataset.sticky = String(sticky);
+      document.querySelector(`#copyright-year`).textContent = new Date().getFullYear();
+      renderCards();
+      setToolbarHeight();
+      alignCarousel(false);
+      updatePlayButton();
+      updateScrollState();
+
+      document.addEventListener(`click`, event => {
+        const target = event.target.closest(`button, a`);
+        if (!target) return;
+        if (target.dataset.layoutOption) {
+          document.body.dataset.layout = target.dataset.layoutOption;
+          document.querySelectorAll(`[data-layout-option]`).forEach(button => button.setAttribute(`aria-pressed`, button === target ? `true` : `false`));
+          window.requestAnimationFrame(() => { setToolbarHeight(); alignCarousel(false); updateScrollState(); });
+        }
+        if (target.dataset.memeIndex !== undefined) selectMeme(Number(target.dataset.memeIndex));
+        if (target.dataset.discoverIndex !== undefined) {
+          selectMeme(Number(target.dataset.discoverIndex));
+          dialog.close();
+          carousel.focus({ preventScroll: true });
+        }
+        if (target.dataset.category) selectCategory(target.dataset.category);
+        if (target.dataset.saveMeme) {
+          const id = target.dataset.saveMeme;
+          savedMemes.has(id) ? savedMemes.delete(id) : savedMemes.add(id);
+          const saved = savedMemes.has(id);
+          target.setAttribute(`aria-pressed`, saved ? `true` : `false`);
+          target.setAttribute(`aria-label`, `${saved ? `Unsave` : `Save`} ${memes.find(meme => meme.id === id)?.title}`);
+          showNotice(saved ? `Saved in this preview. Your selection stays only while this page is open.` : `Removed from this preview's saved selection.`);
+        }
+        if (target.dataset.action === `discover`) openDiscover();
+        if (target.dataset.action === `categories`) openDialog(`Find your kind of funny`, `<p class="dialog-copy">Pick a category and let the archive do the talking.</p><div id="category-options" class="category-options">${[...new Set(memes.map(meme => meme.category))].map((category, index) => `<button id="dialog-category-${index}" class="category-option" data-category="${category}">${icon(`grid`)}${category}</button>`).join(``)}</div>`);
+        if (target.dataset.action === `about`) openDialog(`A good laugh, well filed.`, `<p class="dialog-copy">Memes-Database is an idea for a home for the internet's small, relatable moments: easy to browse, easy to collect, and easy to share with someone who gets it.</p><p class="dialog-copy">Start with a laugh. Keep the ones worth coming back to.</p>`);
+        if (target.dataset.action === `sign-in`) showNotice(`Sign In is a concept entry point. Account flows are outside this landing hero preview.`);
+        if (target.dataset.action === `add-meme`) showNotice(`Add a Meme is a concept entry point. Upload and account flows are outside this landing hero preview.`);
+        if (target.id === `brand-home-link`) { event.preventDefault(); window.scrollTo({ top: 0, behavior: reducedMotion.matches ? `auto` : `smooth` }); }
+        if (target.id === `dialog-close`) dialog.close();
+        if (target.id === `mobile-menu-button`) {
+          const navigation = document.querySelector(`#header-navigation`);
+          const expanded = target.getAttribute(`aria-expanded`) !== `true`;
+          navigation.classList.toggle(`is-open`, expanded);
+          target.setAttribute(`aria-expanded`, String(expanded));
+          target.setAttribute(`aria-label`, expanded ? `Close navigation` : `Open navigation`);
+        }
+      });
+      document.querySelector(`#carousel-previous`).addEventListener(`click`, () => { moveCarousel(-1); refreshTimer(); });
+      document.querySelector(`#carousel-next`).addEventListener(`click`, () => { moveCarousel(1); refreshTimer(); });
+      playButton.addEventListener(`click`, () => { isPlaying = !isPlaying; focusPaused = false; updatePlayButton(); refreshTimer(); });
+      carousel.addEventListener(`keydown`, event => {
+        if (event.key !== `ArrowLeft` && event.key !== `ArrowRight`) return;
+        event.preventDefault();
+        moveCarousel(event.key === `ArrowRight` ? 1 : -1);
+        refreshTimer();
+      });
+      carousel.addEventListener(`mouseenter`, () => { hoverPaused = true; refreshTimer(); });
+      carousel.addEventListener(`mouseleave`, () => { hoverPaused = false; refreshTimer(); });
+      carousel.addEventListener(`focusin`, () => { focusPaused = true; refreshTimer(); });
+      carousel.addEventListener(`focusout`, event => { if (!carousel.contains(event.relatedTarget)) { focusPaused = false; refreshTimer(); } });
+      dialog.addEventListener(`close`, refreshTimer);
+      dialog.addEventListener(`click`, event => {
+        if (event.target !== dialog) return;
+        const bounds = dialog.getBoundingClientRect();
+        if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
+      });
+      scrollTopButton.addEventListener(`click`, () => window.scrollTo({ top: 0, behavior: reducedMotion.matches ? `auto` : `smooth` }));
+      window.addEventListener(`scroll`, updateScrollState, { passive: true });
+      window.addEventListener(`resize`, () => { setToolbarHeight(); alignCarousel(false); updateScrollState(); });
+      document.addEventListener(`visibilitychange`, refreshTimer);
+      reducedMotion.addEventListener(`change`, () => { if (reducedMotion.matches) isPlaying = false; updatePlayButton(); refreshTimer(); });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+.hero-carousel { --featured-card-width: min(355px, 26vw, calc((var(--hero-stage-height, 480px) - 72px) / 1.25)); position: relative; width: 100%; max-width: 1370px; margin: var(--hero-carousel-space, 14px) auto 0; outline-offset: 4px; }
+.hero-carousel-window { position: relative; height: var(--hero-stage-height, 480px); margin: 0 72px; overflow: hidden; cursor: grab; -webkit-user-select: none; user-select: none; touch-action: pan-y pinch-zoom; -webkit-mask-image: linear-gradient(to right, transparent, #000 14%, #000 86%, transparent); mask-image: linear-gradient(to right, transparent, #000 14%, #000 86%, transparent); }
+.hero-carousel-track { position: relative; height: 100%; perspective: 1200px; transform-style: preserve-3d; }
+.carousel-card-slot {
+  left: 50%;
+  display: flex;
+  inset-block: 0;
+  position: absolute;
+  align-items: center;
+  transform-origin: center;
+  z-index: var(--card-order, 1);
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
+  width: var(--featured-card-width);
+  opacity: var(--card-opacity, 1);
+  transform: translateX(calc(-50% + var(--card-offset, 0) * var(--featured-card-width) * .85)) translateZ(var(--card-depth, 0px)) rotateY(var(--card-turn, 0deg)) rotateZ(var(--card-tilt, 0deg));
+  transition: opacity .4s ease, transform .6s cubic-bezier(.22,.72,.21,1);
+}
+.carousel-card-slot[data-hidden='true'] { pointer-events: none; }
+.hero-carousel-window.is-dragging .carousel-card-slot { transition: none; }
+.hero-carousel-window.is-dragging, .hero-carousel-window.is-dragging .carousel-card, .hero-carousel-window.is-dragging .carousel-card a { cursor: grabbing; }
+.carousel-card { width: 100%; flex-shrink: 0; padding: clamp(7px, calc(var(--featured-card-width) * .036), 12px); cursor: grab; transition: box-shadow .4s ease; }
+.carousel-card a { cursor: inherit; }
+.hero-carousel-window button { cursor: pointer; }
+.carousel-card.is-active { box-shadow: 0 25px 55px var(--carousel-shadow); }
+.carousel-card .meme-meta { padding: 8px 4px 2px; }
+.carousel-card .meme-caption { font-size: clamp(14px, calc(var(--featured-card-width) * .075), 20px); }
+.carousel-card.sample-photo-card .meme-caption { font-size: clamp(17px, calc(var(--featured-card-width) * .1), 36px); }
+.carousel-card.sample-photo-card .meme-caption-top { top: clamp(7px, calc(var(--featured-card-width) * .04), 14px); padding: 5px 8px; }
+.carousel-card.sample-photo-card .meme-caption-bottom { position: absolute; right: 0; bottom: 0; left: 0; padding: clamp(7px, calc(var(--featured-card-width) * .045), 15px) 12px; background: #fff5ed; transform: none; }
+.carousel-card .meme-loading-gag { top: calc(var(--featured-card-width) * .29); width: calc(var(--featured-card-width) * .51); height: clamp(18px, calc(var(--featured-card-width) * .1), 31px); padding: 3px; }
+.carousel-card .meme-loading-gag i { width: auto; height: 100%; flex: 1; }
+.hero-fresh-laughs { position: absolute; top: 3px; left: 52px; z-index: 3; width: 175px; height: 113px; color: var(--accent); pointer-events: none; }
+.hero-fresh-laughs text { fill: currentColor; font-family: 'Bradley Hand', 'Comic Sans MS', cursive; font-size: 28px; font-weight: 700; }
+.hero-fresh-laughs path { fill: none; stroke: currentColor; stroke-width: 3.8; stroke-linecap: round; stroke-linejoin: round; }
+.hero-carousel-controls { position: static; z-index: 3; display: flex; align-items: center; justify-content: center; gap: 17px; padding-top: var(--hero-stage-gap, 14px); }
+.carousel-arrow { position: absolute; top: calc(var(--hero-stage-height, 480px) / 2 - 29px); z-index: 4; width: 58px !important; height: 58px !important; border-color: var(--accent) !important; background: color-mix(in srgb, var(--surface) 15%, transparent) !important; box-shadow: 0 4px 15px var(--hero-button-shadow); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+.carousel-arrow:hover { color: var(--primary-text); background: var(--primary) !important; border-color: var(--primary) !important; }
+.carousel-arrow-previous { left: 0; }
+.carousel-arrow-next { right: 0; }
+.carousel-arrow .icon { width: 26px; height: 26px; stroke-width: 2.6; }
+.carousel-dots { display: flex; align-items: center; gap: 10px; }
+.carousel-dot { width: 20px; height: 29px; padding: 0; border: 0; color: var(--lilac); background: transparent; }
+.carousel-dot::before { display: block; width: 10px; height: 10px; margin: auto; border-radius: 50%; background: currentColor; content: ''; opacity: .65; transition: transform .25s, opacity .25s; }
+.carousel-dot[aria-current='true'] { color: var(--primary); }
+.carousel-dot[aria-current='true']::before { transform: scale(1.22); opacity: 1; }
+@media (max-width: 1100px) { .hero-carousel { --featured-card-width: min(290px, 28vw, calc((var(--hero-stage-height, 480px) - 72px) / 1.25)); } .hero-carousel-window { margin: 0 55px; } .carousel-arrow { top: calc(var(--hero-stage-height, 480px) / 2 - 22px); width: 44px !important; height: 44px !important; } .hero-fresh-laughs { top: 7px; left: 40px; width: 141px; height: 93px; } }
+@media (max-width: 800px) { .hero-carousel { --featured-card-width: min(285px, 74vw, calc((var(--hero-stage-height, 480px) - 72px) / 1.25)); } .hero-carousel-window { margin: 0; -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent); } .hero-carousel-controls { position: relative; display: grid; grid-template-columns: 37px auto 37px; gap: 8px; padding: var(--hero-stage-gap, 14px) 10px 0; } .carousel-arrow { position: static; width: 37px !important; height: 37px !important; } .carousel-arrow .icon { width: 20px; height: 20px; } .carousel-dots { gap: 8px; } .carousel-dot { width: 16px; } .hero-fresh-laughs { top: 8px; left: 9px; width: 119px; height: 78px; } }
+@media (max-width: 430px) { .hero-carousel-window { -webkit-mask-image: linear-gradient(to right, transparent, #000 3.5%, #000 96.5%, transparent); mask-image: linear-gradient(to right, transparent, #000 3.5%, #000 96.5%, transparent); } .carousel-dot::before { width: 8px; height: 8px; } .hero-fresh-laughs { left: 1px; top: 7px; width: 106px; height: 72px; } }
+@media (max-height: 700px) { .hero-fresh-laughs { display: none; } }
+@media (min-width: 700px) and (max-height: 540px) { .hero-carousel { margin-top: 0; } .hero-carousel-window { margin: 0 35px; } .hero-carousel-controls { position: static; display: flex; gap: 10px; padding: 14px 0 0; } .carousel-arrow { position: absolute; top: calc(var(--hero-stage-height) / 2 - 18.5px); width: 37px !important; height: 37px !important; } .carousel-dots { gap: 8px; } .carousel-dot { width: 16px; } }
+.hero-carousel.is-reduced-motion .hero-carousel-track { perspective: none; }
+.hero-carousel.is-reduced-motion .carousel-card-slot { transition: none; transform: translateX(calc(-50% + var(--card-offset, 0) * var(--featured-card-width) * .85)); }
+.hero-carousel.is-reduced-motion .carousel-card { transition: none; }
+@media (prefers-reduced-motion: reduce) { .hero-carousel-track { perspective: none; } .carousel-card-slot { transition: none; transform: translateX(calc(-50% + var(--card-offset, 0) * var(--featured-card-width) * .85)); } .carousel-card { transition: none; } .carousel-dot::before { transition: none; } }

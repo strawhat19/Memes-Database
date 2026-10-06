@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="concept-sheet-title concept-sheet-desc">
+  <title id="concept-sheet-title">Memes-Database — Three Logo Concepts, v1</title>
+  <desc id="concept-sheet-desc">An editorial comparison of Archive Grin, M Signal, and Byte Cabinet. Each original concept has a colored mark and exact Memes-Database wordmark, palette notes, and a simplified monochrome 32-pixel sample. These are unadopted design concepts for review.</desc>
+  <defs>
+    <g id="archive-grin-color">
+      <rect x="29" y="17" width="134" height="146" rx="25" fill="#6938EF" transform="rotate(-10 96 90)"/>
+      <rect x="36" y="25" width="134" height="146" rx="25" fill="#BDA7FA" transform="rotate(8 103 98)"/>
+      <rect x="20" y="42" width="144" height="132" rx="28" fill="#FF675B"/>
+      <path d="M49 84 Q58 73 67 84 M117 84 Q126 73 135 84" fill="none" stroke="#1D182A" stroke-width="10" stroke-linecap="round"/>
+      <path d="M51 111 H133 C126 153 60 153 51 111Z" fill="#1D182A"/>
+      <path d="M61 111 H123 L118 123 H66Z" fill="#FFF9F1"/>
+      <path d="M83 141 Q93 132 106 141" fill="none" stroke="#FF675B" stroke-width="7" stroke-linecap="round"/>
+    </g>
+    <g id="m-signal-color">
+      <path d="M48 18 H144 Q172 18 172 46 V130 Q172 158 144 158 H79 L36 180 V155 Q20 148 20 130 V46 Q20 18 48 18Z" fill="#6938EF"/>
+      <path d="M49 126 V57 H72 L96 85 L120 57 H143 V126 H121 V89 L96 116 L71 89 V126Z" fill="#FFF9F1"/>
+      <circle cx="151" cy="31" r="20" fill="#FF675B"/>
+    </g>
+    <g id="byte-cabinet-color">
+      <path d="M48 16 H144 V32 H176 V160 H144 V176 H48 V160 H16 V32 H48Z" fill="#1D182A"/>
+      <rect x="40" y="48" width="48" height="48" rx="4" fill="#FF675B"/>
+      <rect x="104" y="48" width="48" height="48" rx="4" fill="#6938EF"/>
+      <rect x="40" y="112" width="112" height="24" rx="4" fill="#BDA7FA"/>
+      <path d="M60 66 H68 V74 H76 V82 H52 V74 H60Z" fill="#1D182A"/>
+      <path d="M122 64 H134 V80 H122Z" fill="#FFF9F1"/>
+    </g>
+    <g id="archive-grin-mono">
+      <path d="M39 15 H153 Q174 15 174 36 V48 H39Z" fill="#1D182A"/>
+      <rect x="16" y="39" width="152" height="140" rx="26" fill="#1D182A"/>
+      <path d="M50 87 H67 M117 87 H134" stroke="#FFF9F1" stroke-width="13" stroke-linecap="round"/>
+      <path d="M52 115 H132 C123 152 61 152 52 115Z" fill="#FFF9F1"/>
+    </g>
+    <g id="m-signal-mono">
+      <path d="M48 18 H144 Q172 18 172 46 V130 Q172 158 144 158 H79 L36 180 V155 Q20 148 20 130 V46 Q20 18 48 18Z" fill="#1D182A"/>
+      <path d="M49 126 V57 H72 L96 85 L120 57 H143 V126 H121 V89 L96 116 L71 89 V126Z" fill="#FFF9F1"/>
+    </g>
+    <g id="byte-cabinet-mono">
+      <path d="M48 16 H144 V32 H176 V160 H144 V176 H48 V160 H16 V32 H48Z" fill="#1D182A"/>
+      <path d="M40 48 H88 V96 H40Z M104 48 H152 V96 H104Z M40 112 H152 V136 H40Z" fill="#FFF9F1"/>
+    </g>
+  </defs>
+  <rect id="sheet-paper" width="1600" height="1000" fill="#FFF9F1"/>
+  <g id="sheet-typography" fill="#1D182A" font-family="'Avenir Next', Avenir, Arial, sans-serif">
+    <text x="64" y="73" font-size="17" font-weight="650" letter-spacing="2.4">MEMES-DATABASE / IDENTITY EXPLORATIONS</text>
+    <text x="1536" y="73" text-anchor="end" fill="#686171" font-size="17" letter-spacing="1.6">V1 · OCTOBER 2026</text>
+    <text x="64" y="150" font-size="66" font-weight="750" letter-spacing="-2.4">Archive the funny.</text>
+    <text x="64" y="193" fill="#686171" font-size="23">Original marks for a planned meme collection. Three distinct directions.</text>
+    <path d="M64 232 H1536 M544 271 V922 M1056 271 V922 M64 934 H1536" stroke="#DCD5E4" stroke-width="1"/>
+
+    <g id="concept-column-01">
+      <text x="64" y="293" font-size="27" font-weight="700" letter-spacing="-.5">01  Archive Grin</text>
+      <text x="64" y="333" fill="#686171" font-size="19">A saved stack with a joyful face.</text>
+      <text x="64" y="359" fill="#686171" font-size="19">Expressive. Warm. Collectible.</text>
+      <use href="#archive-grin-color" transform="translate(173 391) scale(1.2)"/>
+      <text x="288" y="689" text-anchor="middle" font-size="37" font-weight="750" letter-spacing="-1.3">Memes-Database</text>
+      <circle cx="145" cy="735" r="7" fill="#FF675B"/>
+      <circle cx="169" cy="735" r="7" fill="#6938EF"/>
+      <circle cx="193" cy="735" r="7" fill="#BDA7FA"/>
+      <text x="216" y="741" fill="#686171" font-size="16">Coral leads the collection</text>
+      <path d="M64 779 H512" stroke="#DCD5E4"/>
+      <use href="#archive-grin-mono" transform="translate(64 809) scale(.166667)"/>
+      <text x="120" y="832" fill="#686171" font-size="14" font-weight="650" letter-spacing="1.5">ONE COLOR / 32 PX</text>
+      <text x="64" y="879" font-size="18">Best fit: collection avatar or app icon</text>
+      <text x="64" y="905" fill="#686171" font-size="16">Card stack + original expressive geometry</text>
+    </g>
+
+    <g id="concept-column-02">
+      <text x="576" y="293" font-size="27" font-weight="700" letter-spacing="-.5">02  M Signal</text>
+      <text x="576" y="333" fill="#686171" font-size="19">A monogram with something to say.</text>
+      <text x="576" y="359" fill="#686171" font-size="19">Bold. Social. Immediately legible.</text>
+      <use href="#m-signal-color" transform="translate(685 391) scale(1.2)"/>
+      <text x="800" y="689" text-anchor="middle" font-size="37" font-weight="750" letter-spacing="-1.3">Memes-Database</text>
+      <circle cx="663" cy="735" r="7" fill="#6938EF"/>
+      <circle cx="687" cy="735" r="7" fill="#FF675B"/>
+      <circle cx="711" cy="735" r="7" fill="#1D182A"/>
+      <text x="734" y="741" fill="#686171" font-size="16">Violet sends the signal</text>
+      <path d="M576 779 H1024" stroke="#DCD5E4"/>
+      <use href="#m-signal-mono" transform="translate(576 809) scale(.166667)"/>
+      <text x="632" y="832" fill="#686171" font-size="14" font-weight="650" letter-spacing="1.5">ONE COLOR / 32 PX</text>
+      <text x="576" y="879" font-size="18">Best fit: navigation or profile avatar</text>
+      <text x="576" y="905" fill="#686171" font-size="16">Conversation balloon + confident M</text>
+    </g>
+
+    <g id="concept-column-03">
+      <text x="1088" y="293" font-size="27" font-weight="700" letter-spacing="-.5">03  Byte Cabinet</text>
+      <text x="1088" y="333" fill="#686171" font-size="19">Internet fragments, neatly organized.</text>
+      <text x="1088" y="359" fill="#686171" font-size="19">Structured. Digital. A little retro.</text>
+      <use href="#byte-cabinet-color" transform="translate(1197 391) scale(1.2)"/>
+      <text x="1312" y="689" text-anchor="middle" font-size="37" font-weight="750" letter-spacing="-1.3">Memes-Database</text>
+      <circle cx="1163" cy="735" r="7" fill="#1D182A"/>
+      <circle cx="1187" cy="735" r="7" fill="#FF675B"/>
+      <circle cx="1211" cy="735" r="7" fill="#6938EF"/>
+      <text x="1234" y="741" fill="#686171" font-size="16">Ink frames the archive</text>
+      <path d="M1088 779 H1536" stroke="#DCD5E4"/>
+      <use href="#byte-cabinet-mono" transform="translate(1088 809) scale(.166667)"/>
+      <text x="1144" y="832" fill="#686171" font-size="14" font-weight="650" letter-spacing="1.5">ONE COLOR / 32 PX</text>
+      <text x="1088" y="879" font-size="18">Best fit: catalog header or favicon</text>
+      <text x="1088" y="905" fill="#686171" font-size="16">Stepped cabinet + modular content tiles</text>
+    </g>
+    <text x="64" y="968" fill="#686171" font-size="15">ORIGINAL EDITABLE SVG ARTWORK · FLAT COMPARISON SHEET</text>
+    <text x="1536" y="968" text-anchor="end" fill="#686171" font-size="15">CONCEPTS FOR REVIEW · NO DIRECTION ADOPTED</text>
+  </g>
+</svg>

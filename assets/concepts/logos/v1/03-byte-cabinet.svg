@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" role="img" aria-labelledby="byte-cabinet-title byte-cabinet-desc">
+  <title id="byte-cabinet-title">Memes-Database — Byte Cabinet concept</title>
+  <desc id="byte-cabinet-desc">A stepped pixel cabinet holds a coral featured tile and a pale violet grid. A compact technology-inspired archive symbol beside the Memes-Database wordmark. Transparent canvas.</desc>
+  <g id="byte-cabinet-mark" transform="translate(10 14)">
+    <path d="M48 16 H144 V32 H176 V160 H144 V176 H48 V160 H16 V32 H48Z" fill="#1D182A"/>
+    <rect x="40" y="48" width="48" height="48" rx="4" fill="#FF675B"/>
+    <rect x="104" y="48" width="48" height="48" rx="4" fill="#6938EF"/>
+    <rect x="40" y="112" width="112" height="24" rx="4" fill="#BDA7FA"/>
+    <path d="M60 66 H68 V74 H76 V82 H52 V74 H60Z" fill="#1D182A"/>
+    <path d="M122 64 H134 V80 H122Z" fill="#FFF9F1"/>
+  </g>
+  <text id="byte-cabinet-wordmark" x="227" y="127" fill="#1D182A" font-size="53" font-weight="750" letter-spacing="-2" font-family="'Avenir Next', Avenir, Arial, sans-serif">Memes-Database</text>
+</svg>

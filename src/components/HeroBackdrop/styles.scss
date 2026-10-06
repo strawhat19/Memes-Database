@@ -1,0 +1,81 @@
+.hero-backdrop {
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  position: absolute;
+  pointer-events: none;
+  transition: background-color .3s;
+  top: calc(0px - var(--header-height));
+  background: radial-gradient(ellipse at 50% 43%, var(--hero-glow) 0%, transparent 72%), var(--paper);
+
+  &::after {
+    inset: 0;
+    content: '';
+    position: absolute;
+    background: linear-gradient(180deg, transparent 0%, transparent 85%, var(--paper) 100%);
+  }
+}
+
+.hero-backdrop-scene {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+
+  path, text, circle, g {
+    transition: fill .3s, stroke .3s;
+  }
+}
+
+.hero-backdrop-wave {
+  fill: var(--scene-wave, var(--lilac));
+}
+
+.hero-backdrop-wave-rear { opacity: .8; }
+.hero-backdrop-wave-front { opacity: .6; }
+
+.hero-backdrop-edge-squiggles {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: var(--scene-line, var(--lilac));
+}
+
+.hero-backdrop-stars {
+  opacity: .65;
+  fill: var(--accent);
+}
+
+.hero-backdrop-dots {
+  opacity: .55;
+  fill: var(--accent);
+}
+
+.hero-backdrop-mint-zigzag,
+.hero-backdrop-coral-rays {
+  fill: none;
+  opacity: .65;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.hero-backdrop-mint-zigzag { stroke: var(--pistachio); }
+.hero-backdrop-coral-rays { stroke: var(--coral); }
+
+.hero-backdrop-message {
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  fill: var(--scene-ink, var(--accent));
+  font-family: 'Bradley Hand', Chalkboard, 'Comic Sans MS', cursive;
+}
+
+.hero-backdrop-corner-doodle {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: var(--scene-ink, var(--accent));
+}

@@ -1,0 +1,18 @@
+.library-filters { display: grid; grid-template-columns: minmax(220px, 1fr) 164px 170px 150px; gap: 13px; align-items: end; margin-bottom: 22px; }
+.search-field { min-height: 48px; padding: 0 15px; display: flex; align-items: center; gap: 9px; border: 1px solid var(--border); border-radius: 10px; color: var(--muted); background: var(--surface); }
+.search-field .icon { width: 18px; height: 18px; }
+.search-field input { width: 100%; min-width: 0; padding: 14px 0; border: 0; color: var(--ink); background: none; font-size: 12px; outline-offset: 0; }
+.search-field input::placeholder { color: var(--muted); opacity: .7; }
+.select-field { display: flex; flex-direction: column; gap: 8px; }
+.select-field > span { color: var(--muted); font-size: 10px; font-weight: 700; }
+.select-field select { min-height: 48px; padding: 10px 13px; border: 1px solid var(--border); border-radius: 10px; color: var(--ink); background: var(--surface); font-size: 12px; }
+.library-summary { display: flex; align-items: center; gap: 22px; margin: 0 0 25px; color: var(--muted); font-size: 12px; }
+.library-summary .text-button:last-child { margin-left: auto; }
+.meme-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; align-items: start; }
+.meme-grid .meme-card { transition: transform .25s, box-shadow .25s; }
+.meme-grid .meme-card:hover { transform: translateY(-4px); box-shadow: 0 16px 35px #07031424; }
+.meme-grid .meme-caption { font-size: 14px; }
+.library-filters + .error-banner, .library-summary + .error-banner { margin-bottom: 25px; }
+@media (max-width: 1120px) { .meme-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .library-filters { grid-template-columns: minmax(220px, 1fr) repeat(3, 145px); } }
+@media (max-width: 850px) { .library-filters { grid-template-columns: repeat(3, minmax(0, 1fr)); } .search-field { grid-column: 1 / -1; } .meme-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 17px; } }
+@media (max-width: 480px) { .library-filters { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } .select-field:last-child { grid-column: 1 / -1; } .meme-grid { grid-template-columns: 1fr; gap: 22px; } .meme-grid .meme-card { max-width: 400px; width: 100%; margin: auto; } .library-summary { gap: 15px; flex-wrap: wrap; } }

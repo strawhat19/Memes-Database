@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" role="img" aria-labelledby="archive-grin-title archive-grin-desc">
+  <title id="archive-grin-title">Memes-Database — Archive Grin concept</title>
+  <desc id="archive-grin-desc">An original smiling coral archive card backed by two violet cards, beside the Memes-Database wordmark. Transparent canvas.</desc>
+  <g id="archive-grin-mark" transform="translate(10 14)">
+    <rect x="29" y="17" width="134" height="146" rx="25" fill="#6938EF" transform="rotate(-10 96 90)"/>
+    <rect x="36" y="25" width="134" height="146" rx="25" fill="#BDA7FA" transform="rotate(8 103 98)"/>
+    <rect x="20" y="42" width="144" height="132" rx="28" fill="#FF675B"/>
+    <path d="M49 84 Q58 73 67 84 M117 84 Q126 73 135 84" fill="none" stroke="#1D182A" stroke-width="10" stroke-linecap="round"/>
+    <path d="M51 111 H133 C126 153 60 153 51 111Z" fill="#1D182A"/>
+    <path d="M61 111 H123 L118 123 H66Z" fill="#FFF9F1"/>
+    <path d="M83 141 Q93 132 106 141" fill="none" stroke="#FF675B" stroke-width="7" stroke-linecap="round"/>
+  </g>
+  <text id="archive-grin-wordmark" x="227" y="127" fill="#1D182A" font-size="53" font-weight="750" letter-spacing="-2" font-family="'Avenir Next', Avenir, Arial, sans-serif">Memes-Database</text>
+</svg>

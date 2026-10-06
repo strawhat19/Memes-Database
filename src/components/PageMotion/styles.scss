@@ -1,0 +1,12 @@
+.motion-word,
+.motion-character {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+[data-split-text='chars'] { perspective: 800px; }
+
+.motion-reveal-active {
+  transition: none !important;
+  will-change: transform, opacity;
+}

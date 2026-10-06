@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" role="img" aria-labelledby="m-signal-mark-title m-signal-mark-desc">
+  <title id="m-signal-mark-title">M Signal — Memes-Database mark</title>
+  <desc id="m-signal-mark-desc">A white angular M inside a violet speech balloon, with a coral signal dot. Transparent canvas.</desc>
+  <g id="m-signal-mark">
+    <path d="M48 18 H144 Q172 18 172 46 V130 Q172 158 144 158 H79 L36 180 V155 Q20 148 20 130 V46 Q20 18 48 18Z" fill="#6938EF"/>
+    <path d="M49 126 V57 H72 L96 85 L120 57 H143 V126 H121 V89 L96 116 L71 89 V126Z" fill="#FFF9F1"/>
+    <circle cx="151" cy="31" r="20" fill="#FF675B"/>
+  </g>
+</svg>

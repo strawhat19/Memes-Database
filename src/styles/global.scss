@@ -1,0 +1,69 @@
+:root {
+  --ink: #fff5ed;
+  --muted: #bbb4d2;
+  --paper: #201c39;
+  --coral: #ff785d;
+  --lilac: #b8b0f1;
+  --border: #443d5c;
+  --accent: #b8b0f1;
+  --surface: #2a2444;
+  --primary: #bce3af;
+  --pistachio: #bce3af;
+  color-scheme: dark;
+  font-family: 'Avenir Next', Avenir, 'Segoe UI', Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: var(--paper); }
+body { margin: 0; color: var(--ink); background: var(--paper); }
+body, #root { min-height: 100vh; }
+button, input, select, textarea { font: inherit; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; }
+button:disabled { cursor: default; opacity: .5; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible { outline: 3px solid var(--coral); outline-offset: 4px; }
+img, svg { display: block; }
+img { max-width: 100%; }
+.icon { width: 20px; height: 20px; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.app-shell { position: relative; width: 100%; min-width: 0; min-height: 100vh; color: var(--ink); background: var(--paper); transition: color .3s, background .3s; --header-height: 108px; --primary-text: #25213d; --hero-glow: #5040dc50; --header-glass: #201c39da; --carousel-shadow: #0804113d; --hero-button-shadow: #08041815; --hero-button-start: var(--primary); --hero-button-end: var(--primary); --scene-wave: color-mix(in srgb, var(--accent) 20%, transparent); --scene-ink: color-mix(in srgb, var(--accent) 55%, transparent); --scene-line: color-mix(in srgb, var(--accent) 15%, transparent); }
+.app-shell[data-theme='light'] { --primary-text: #fff5ed; --hero-glow: #b8b0f150; --header-glass: #fff5ede0; --carousel-shadow: #64505428; --hero-button-shadow: #5040dc25; --hero-button-start: #6651ef; --hero-button-end: #4932df; }
+.main-content { min-height: 55vh; outline: none; }
+.app-shell.is-home .main-content { position: relative; z-index: 0; }
+
+.button { min-height: 50px; padding: 13px 22px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; border: 1px solid transparent; border-radius: 100px; font-size: 14px; font-weight: 750; line-height: 1.3; transition: background .2s, box-shadow .2s, transform .2s; }
+.button:hover { transform: translateY(-2px); }
+.button-primary, .header-add { color: var(--primary-text); background: var(--primary); }
+.button-secondary { color: var(--ink); border-color: var(--border); background: transparent; }
+.button-secondary:hover { background: var(--surface); }
+.button-small { min-height: 41px; padding: 10px 15px; font-size: 12px; }
+.button-small .icon { width: 15px; height: 15px; }
+.button-danger { color: #fff5ed; background: #b63d5b; }
+.button-danger-outline { color: var(--coral); border-color: var(--border); background: none; }
+.icon-button { width: 40px; height: 40px; padding: 0; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--border); border-radius: 50%; color: inherit; background: transparent; transition: background .2s, border-color .2s; }
+.icon-button:hover { background: var(--surface); }
+.eyebrow { margin: 0 0 15px; color: var(--accent); font-size: 11px; font-weight: 800; line-height: 1.5; letter-spacing: 2px; text-transform: uppercase; }
+.text-link, .text-button { display: inline-flex; align-items: center; gap: 8px; border: 0; color: var(--accent); background: none; font-size: 13px; font-weight: 750; }
+.text-link .icon, .text-button .icon { width: 16px; height: 16px; }
+.text-link:hover, .text-button:hover { opacity: .75; }
+.page-container { max-width: 1320px; margin: auto; padding: 68px 48px 80px; }
+.page-heading { display: flex; align-items: end; justify-content: space-between; gap: 35px; margin-bottom: 38px; }
+.page-heading h1 { max-width: 830px; margin: 0 0 17px; font-size: clamp(37px, 4.4vw, 59px); line-height: 1.04; letter-spacing: -2.5px; }
+.page-heading p:not(.eyebrow) { max-width: 670px; margin: 0; color: var(--muted); font-size: 15px; line-height: 1.7; }
+.empty-state { padding: 65px 25px; display: flex; align-items: center; flex-direction: column; border: 1px dashed var(--border); border-radius: 20px; text-align: center; }
+.empty-state > .icon { width: 36px; height: 36px; margin-bottom: 10px; color: var(--accent); }
+.empty-state h1, .empty-state h2 { max-width: 540px; margin: 15px 0 10px; font-size: 28px; letter-spacing: -1px; }
+.empty-state p { max-width: 520px; margin: 0 0 25px; color: var(--muted); font-size: 14px; line-height: 1.7; }
+.error-banner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; padding: 16px 19px; border: 1px solid #ff785d55; border-radius: 12px; color: var(--ink); background: #ff785d12; font-size: 13px; line-height: 1.5; }
+.inline-error { padding: 5px 9px; margin: 0; color: #a62c49; font-size: 11px; line-height: 1.4; }
+.form-field { display: flex; flex-direction: column; gap: 9px; }
+.form-field > span { font-size: 13px; font-weight: 750; }
+.form-field small { color: var(--muted); font-size: 11px; font-weight: 500; line-height: 1.6; }
+.form-field input, .form-field select, .form-field textarea { width: 100%; min-height: 49px; padding: 13px 15px; border: 1px solid var(--border); border-radius: 10px; color: var(--ink); background: var(--surface); font-size: 13px; }
+.form-field input::placeholder { color: var(--muted); opacity: .7; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+@media (max-width: 800px) { .page-container { padding: 39px 23px 56px; } .page-heading { flex-direction: column; align-items: flex-start; gap: 24px; margin-bottom: 28px; } .page-heading h1 { letter-spacing: -1.8px; } }
+@media (max-width: 1040px) { .app-shell { --header-height: 96px; } }
+@media (max-width: 760px) { .app-shell { --header-height: 84px; } }
+@media (max-width: 660px) { .app-shell { --header-height: 78px; } }
+@media (max-width: 380px) { .app-shell { --header-height: 68px; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } .button:hover { transform: none; } }

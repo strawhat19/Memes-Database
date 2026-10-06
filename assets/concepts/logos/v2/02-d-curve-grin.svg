@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" role="img" aria-labelledby="d-curve-title d-curve-desc">
+  <title id="d-curve-title">Memes-Database — D Curve Grin concept</title>
+  <desc id="d-curve-desc">A teal capital D doubles as the archive card frame, with the smiling face in its apricot counter. Tilted apricot and mint cards continue the Archive Grin idea. Transparent canvas.</desc>
+  <g id="d-curve-mark" transform="translate(10 14)">
+    <rect x="30" y="18" width="131" height="146" rx="24" fill="#FFB87D" transform="rotate(-10 95 91)"/>
+    <rect x="37" y="26" width="130" height="146" rx="24" fill="#A8D9CD" transform="rotate(8 102 99)"/>
+    <path d="M23 43 H90 C136 43 168 68 168 110 C168 151 137 177 90 177 H23Z" fill="#087D79"/>
+    <path d="M49 66 H89 C121 66 143 82 143 110 C143 138 121 154 89 154 H49Z" fill="#FFB87D"/>
+    <path d="M62 94 Q69 86 76 94 M110 94 Q117 86 124 94" fill="none" stroke="#143D3C" stroke-width="8" stroke-linecap="round"/>
+    <path d="M65 116 H125 C118 146 74 146 65 116Z" fill="#143D3C"/>
+    <path d="M73 116 H117 L113 125 H77Z" fill="#FFF5ED"/>
+  </g>
+  <text id="d-curve-wordmark" x="227" y="127" fill="#143D3C" font-size="53" font-weight="750" letter-spacing="-2" font-family="'Avenir Next', Avenir, Arial, sans-serif">Memes-Database</text>
+</svg>

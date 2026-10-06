@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" role="img" aria-labelledby="b-pocket-title b-pocket-desc">
+  <title id="b-pocket-title">Memes-Database — B Twin Pocket concept</title>
+  <desc id="b-pocket-desc">A rose capital B forms a two-pocket archive card: happy eyes occupy its upper counter and a grin its lower counter. Periwinkle and blush cards create the saved stack. Transparent canvas.</desc>
+  <g id="b-pocket-mark" transform="translate(10 14)">
+    <rect x="30" y="18" width="132" height="147" rx="24" fill="#99A3ED" transform="rotate(-10 96 91)"/>
+    <rect x="36" y="26" width="131" height="146" rx="24" fill="#F1B6C8" transform="rotate(8 101 99)"/>
+    <path d="M24 43 H94 C136 43 159 57 159 81 C159 94 151 102 139 108 C158 113 170 125 170 143 C170 165 146 178 104 178 H24Z" fill="#CA416A"/>
+    <path d="M49 62 H92 Q135 62 135 83 Q135 99 92 99 H49Z" fill="#FFF5ED"/>
+    <path d="M49 119 H100 Q145 119 145 141 Q145 159 100 159 H49Z" fill="#FFF5ED"/>
+    <path d="M60 84 Q69 74 78 84 M102 84 Q111 74 120 84" fill="none" stroke="#352236" stroke-width="8" stroke-linecap="round"/>
+    <path d="M65 128 H128 C121 157 75 157 65 128Z" fill="#352236"/>
+    <path d="M73 128 H120 L116 137 H77Z" fill="#F1B6C8"/>
+  </g>
+  <text id="b-pocket-wordmark" x="227" y="127" fill="#352236" font-size="53" font-weight="750" letter-spacing="-2" font-family="'Avenir Next', Avenir, Arial, sans-serif">Memes-Database</text>
+</svg>

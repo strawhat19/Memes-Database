@@ -1,0 +1,26 @@
+import { StyleSheet } from 'react-native';
+
+export const nativeStyles = StyleSheet.create({
+  shell: { flex: 1 },
+  body: { flex: 1 },
+  line: { marginTop: 12 },
+  image: { width: `100%`, height: 210, borderRadius: 11 },
+  field: { minHeight: 48, borderWidth: 1, borderRadius: 11, padding: 13 },
+  content: { padding: 22, gap: 20, paddingBottom: 42 },
+  row: { flexDirection: `row`, flexWrap: `wrap`, alignItems: `center`, gap: 10 },
+  paragraph: { fontSize: 14, lineHeight: 23 },
+  headline: { fontSize: 37, lineHeight: 41, fontWeight: `800`, letterSpacing: -1.5 },
+  heading: { fontSize: 22, lineHeight: 27, fontWeight: `700` },
+  caption: { color: `#25213D`, fontSize: 16, fontWeight: `800`, textAlign: `center`, padding: 12 },
+  card: { padding: 9, borderRadius: 15, backgroundColor: `#FFFDFA`, gap: 4 },
+  cardTitle: { color: `#25213D`, fontSize: 13, fontWeight: `700` },
+  category: { color: `#85728C`, fontSize: 10, fontWeight: `700` },
+  button: { minHeight: 43, paddingHorizontal: 17, paddingVertical: 11, borderRadius: 100, borderWidth: 1, alignItems: `center`, justifyContent: `center` },
+  buttonText: { fontSize: 12, fontWeight: `700` },
+  header: { padding: 17, gap: 13, borderBottomWidth: 1 },
+  brand: { fontSize: 21, fontWeight: `800` },
+  footer: { padding: 16, gap: 8, borderTopWidth: 1 },
+  small: { fontSize: 11, lineHeight: 17 },
+  fallbackArt: { minHeight: 160, borderRadius: 11, backgroundColor: `#B8B0F1`, alignItems: `center`, justifyContent: `center` },
+  fallbackSymbol: { fontSize: 56, color: `#5040DC` },
+});

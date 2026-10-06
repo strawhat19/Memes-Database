@@ -1,0 +1,30 @@
+.meme-card { overflow: hidden; min-width: 0; padding: 11px; border: 1px solid #fff5ed66; border-radius: 23px; color: #25213d; background: #fff5ed; box-shadow: 0 7px 26px #11092513; }
+.meme-art-link { position: relative; display: block; border-radius: 14px; overflow: hidden; }
+.meme-artwork { display: flex; align-items: center; justify-content: center; overflow: hidden; width: 100%; aspect-ratio: 4 / 3; border-radius: 13px; background: #eee8f7; }
+.meme-artwork img { width: 100%; height: 100%; object-fit: contain; }
+.sample-card .meme-artwork img { object-fit: cover; }
+.meme-caption { margin: 0; padding: 13px 7px; color: #25213d; text-align: center; font-size: 16px; font-weight: 850; line-height: 1.2; letter-spacing: -.45px; overflow-wrap: anywhere; }
+.meme-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 12px 6px 4px; }
+.meme-meta-copy { min-width: 0; display: flex; flex-direction: column; gap: 5px; }
+.meme-category { width: fit-content; padding: 3px 7px; border-radius: 5px; color: #61516f; background: #b8b0f12b; font-size: 8px; font-weight: 750; letter-spacing: .6px; text-transform: uppercase; }
+.meme-title { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 11px; font-weight: 700; }
+.bookmark-button { width: 31px !important; height: 31px !important; flex-shrink: 0; border: 0 !important; color: #5040dc !important; background: #5040dc0d !important; }
+.bookmark-button .icon { width: 16px; height: 16px; }
+.bookmark-button.is-saved { color: #25213d !important; background: #bce3af !important; }
+.image-fallback { display: flex; align-items: center; flex-direction: column; gap: 12px; color: #84748b; font-size: 12px; }
+.image-fallback .icon { width: 32px; height: 32px; }
+.sample-photo-card { padding: 12px; border-radius: 27px; }
+.sample-photo-card .meme-art-link { border-radius: 18px; }
+.sample-photo-card .meme-artwork { aspect-ratio: 4 / 5; border-radius: 17px; background: #e8d6c3; }
+.sample-photo-card .meme-caption { font-family: 'Comic Sans MS', 'Chalkboard SE', 'Bradley Hand', cursive; font-size: clamp(20px, 2.15vw, 33px); font-weight: 800; line-height: 1.04; letter-spacing: -.6px; }
+.sample-photo-card .meme-caption-top { position: absolute; top: 14px; left: 9px; right: 9px; z-index: 2; padding: 7px 15px; color: #201b35; transform: rotate(-4deg); text-shadow: 0 1px 1px #fff5ed44; }
+.sample-photo-card .meme-caption-top span { display: block; }
+.sample-photo-card .meme-caption-bottom { padding: 15px 20px 9px; color: #201b35; transform: rotate(-2deg); }
+.sample-photo-card .meme-meta { padding-top: 11px; }
+.sample-photo-card .meme-category { background: #bce3af6b; }
+.coffee-photo-card .meme-caption-top { top: 12px; color: #fff5ed; text-shadow: 0 2px 7px #15102499; transform: rotate(0); }
+.meme-loading-gag { position: absolute; top: 100px; left: 50%; z-index: 2; display: flex; gap: 4px; width: 174px; height: 31px; padding: 4px; border: 2px solid #fff5ed; border-radius: 10px; transform: translateX(-50%); }
+.meme-loading-gag i { width: 19px; height: 19px; border-radius: 3px; background: #bce3af; }
+.meme-skeleton { min-height: 320px; border: 1px solid var(--border); border-radius: 16px; background: linear-gradient(110deg, var(--surface), var(--paper), var(--surface)); background-size: 200% 100%; animation: skeleton-shift 2.2s ease-in-out infinite; }
+@keyframes skeleton-shift { 0%, 100% { background-position: 0 0; } 50% { background-position: 100% 0; } }
+@media (max-width: 800px) { .sample-photo-card { padding: 10px; border-radius: 23px; } .sample-photo-card .meme-caption { font-size: 26px; } .sample-photo-card .meme-caption-top { top: 13px; padding: 6px 12px; } .meme-loading-gag { top: 88px; width: 152px; height: 27px; padding: 3px; } .meme-loading-gag i { width: 17px; height: 17px; } }

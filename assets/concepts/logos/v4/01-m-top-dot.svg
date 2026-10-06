@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" role="img" aria-labelledby="m-top-dot-title m-top-dot-desc">
+  <title id="m-top-dot-title">Memes-Database — M Top Dot concept</title>
+  <desc id="m-top-dot-desc">The selected Corner Dot artwork, with the green circle moved directly above the right upright of the ivory M. Dot center 117, 20; radius 6.5; 2.5-unit gap above the M. Original stack, expression, colors, and wordmark unchanged. Transparent canvas.</desc>
+  <g id="m-top-dot-mark" transform="translate(10 14)">
+    <rect x="28" y="22" width="133" height="144" rx="24" fill="#5040DC" transform="rotate(-10 94 94)"/>
+    <rect x="35" y="29" width="133" height="144" rx="24" fill="#B8B0F1" transform="rotate(8 101 101)"/>
+    <path d="M66 17 H125 Q139 17 139 31 V76 H52 V31 Q52 17 66 17Z" fill="#5040DC"/>
+    <path d="M68 57 V29 H78 L95 43 L112 29 H122 V57 H111 V44 L95 57 L79 44 V57Z" fill="#FFF5ED"/>
+    <circle id="m-top-dot-green-accent" cx="117" cy="20" r="6.5" fill="#BCE3AF"/>
+    <rect x="20" y="67" width="144" height="111" rx="26" fill="#FF785D"/>
+    <path d="M48 104 Q58 93 68 104 M116 104 Q126 93 136 104" fill="none" stroke="#25213D" stroke-width="10" stroke-linecap="round"/>
+    <path d="M51 128 H133 C125 165 59 165 51 128Z" fill="#25213D"/>
+    <path d="M62 128 H122 L117 139 H67Z" fill="#FFF5ED"/>
+  </g>
+  <text id="m-top-dot-wordmark" x="227" y="127" fill="#25213D" font-size="53" font-weight="750" letter-spacing="-2" font-family="'Avenir Next', Avenir, Arial, sans-serif">Memes-Database</text>
+</svg>
