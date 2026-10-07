@@ -2,6 +2,7 @@ import './styles.scss';
 import { Link } from 'expo-router';
 import { Icon } from '../Icon';
 import { landingSteps } from './content';
+import PricingSection from '../PricingSection';
 import { RouterAnchor } from '../RouterAnchor';
 
 const LandingSections = () => (
@@ -108,6 +109,7 @@ const LandingSections = () => (
         </Link>
       </div>
     </section>
+    <PricingSection />
     <section
       id={`landing-final-cta`}
       className={`landing-final-cta`}

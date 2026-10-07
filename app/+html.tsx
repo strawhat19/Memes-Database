@@ -9,9 +9,9 @@ const RootHtml = ({ children }: PropsWithChildren) => (
       <meta name='application-name' content='Memes Database' />
       <meta name='viewport' content='width=device-width, initial-scale=1' />
       <meta name='description' content='Find your next favorite meme. Browse a playful collection, save favorites, and keep your own memes close.' />
-      <link rel='icon' href='/favicon.svg' type='image/svg+xml' />
+      <link rel='icon' href='/favicon.svg?v=2' type='image/svg+xml' />
       <link rel='manifest' href='/manifest.webmanifest' />
-      <link rel='apple-touch-icon' href='/icons/icon-192.png' />
+      <link rel='apple-touch-icon' href='/icons/icon-192.png?v=2' />
     </head>
     <body>{children}</body>
   </html>

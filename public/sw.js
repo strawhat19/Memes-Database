@@ -1,5 +1,5 @@
 const cachePrefix = `memes-database-`;
-const cacheName = `${cachePrefix}v2`;
+const cacheName = `${cachePrefix}v3`;
 const appShell = [
   `/`,
   `/favicon.svg`,
@@ -7,6 +7,7 @@ const appShell = [
   `/brand/logo-mark.svg`,
   `/icons/icon-192.png`,
   `/icons/icon-512.png`,
+  `/icons/icon-maskable-512.png`,
   `/manifest.webmanifest`,
   `/memes/weekend-mode.png`,
   `/memes/one-more-tab.png`,

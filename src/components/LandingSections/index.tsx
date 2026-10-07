@@ -2,6 +2,7 @@ import { Text, View } from 'react-native';
 import { landingSteps } from './content';
 import { NativeButton } from '../NativePage';
 import { styles } from './styles.native';
+import PricingSection from '../PricingSection';
 import { useTheme } from '../../shared/themeContext/useTheme';
 
 const LandingSections = () => {
@@ -37,6 +38,7 @@ const LandingSections = () => {
           <NativeButton id={`landing-collection-saved-link`} href={`/saved`} title={`♡ Visit Saved Memes`} />
         </View>
       </View>
+      <PricingSection />
       <View nativeID={`landing-final-cta`} style={[styles.cta, { borderColor: palette.border, backgroundColor: palette.surface }]}>
         <Text nativeID={`landing-final-cta-eyebrow`} style={[styles.eyebrow, { color: palette.accent }]}>✦ There is always room</Text>
         <Text nativeID={`landing-final-cta-title`} accessibilityRole={`header`} style={[styles.title, styles.center, { color: palette.ink }]}>Make room for one more laugh.</Text>

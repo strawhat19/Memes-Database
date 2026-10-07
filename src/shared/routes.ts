@@ -7,6 +7,7 @@ export const routes = {
   terms: `/terms`,
   signin: `/signin`,
   signup: `/signup`,
+  pricing: `/pricing`,
   contact: `/contact`,
   privacy: `/privacy`,
   discover: `/discover`,
@@ -27,5 +28,6 @@ export const navigation = [
   { label: `Categories`, path: routes.categories, icon: `layers` },
   { label: `Discover`, path: routes.discover, icon: `grid` },
   { label: `Saved`, path: routes.saved, icon: `bookmark` },
+  { label: `Pricing`, path: routes.pricing, icon: `layers` },
   { label: `Contact`, path: routes.contact, icon: `mail` },
 ] as const;

@@ -1,0 +1,28 @@
+import { StyleSheet } from 'react-native';
+
+export const styles = StyleSheet.create({
+  table: { gap: 20 },
+  pricing: { gap: 8 },
+  section: { gap: 26 },
+  header: { gap: 14 },
+  description: { fontSize: 14, lineHeight: 23 },
+  detail: { fontSize: 12, lineHeight: 19 },
+  note: { gap: 9, flexDirection: `row`, alignItems: `flex-start` },
+  noteIcon: { fontSize: 16, lineHeight: 21 },
+  noteLabel: { flex: 1, fontSize: 12, lineHeight: 21 },
+  feature: { gap: 10, flexDirection: `row`, alignItems: `flex-start` },
+  featureIcon: { fontSize: 15, lineHeight: 22 },
+  featureLabel: { flex: 1, fontSize: 13, lineHeight: 22 },
+  priceRow: { gap: 8, flexWrap: `wrap`, flexDirection: `row`, alignItems: `baseline` },
+  planHeading: { gap: 12, flexDirection: `row`, alignItems: `center` },
+  features: { gap: 12, paddingTop: 19, borderTopWidth: 1 },
+  number: { fontSize: 10, letterSpacing: 1, fontVariant: [`tabular-nums`] },
+  footer: { gap: 15, marginTop: 6, flexWrap: `wrap`, flexDirection: `row`, alignItems: `center`, justifyContent: `space-between` },
+  planName: { fontSize: 25, lineHeight: 31, fontWeight: `800`, letterSpacing: -.6 },
+  title: { fontSize: 29, lineHeight: 35, fontWeight: `800`, letterSpacing: -.8 },
+  price: { fontSize: 34, lineHeight: 40, fontWeight: `800`, letterSpacing: -1 },
+  eyebrow: { fontSize: 10, lineHeight: 16, fontWeight: `800`, letterSpacing: 1.7, textTransform: `uppercase` },
+  badge: { fontSize: 11, lineHeight: 17, fontWeight: `700`, paddingVertical: 6, paddingHorizontal: 11, borderRadius: 20, alignSelf: `flex-start` },
+  card: { gap: 18, padding: 23, borderWidth: 1, borderRadius: 22, borderTopWidth: 5 },
+  icon: { width: 42, height: 42, fontSize: 25, lineHeight: 42, borderRadius: 14, textAlign: `center`, overflow: `hidden` },
+});
